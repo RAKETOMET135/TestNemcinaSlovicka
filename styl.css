@@ -94,3 +94,38 @@
     padding: 10px;
     border-radius: 15px;
 }
+
+@media screen and (max-width:600px) {
+    h1{
+        font-size: 12px;
+        line-height: 20px;
+    }
+    p{
+        font-size: 10px;
+        line-height: 20px;
+    }
+    .WordBox{
+        top: 30%;
+        width: 250px;
+    }
+    #InputText{
+        width: 250px;
+    }
+    .GivenWord{
+        top: 22%;
+        width: 250px;
+    }
+    #A{
+        width: 50px;
+    }
+    #O{
+        width: 50px;
+    }
+    .Submit{
+        width: 250px;
+        left: 50%;
+    }
+    #Submit{
+        width: 250px;
+    }
+}
