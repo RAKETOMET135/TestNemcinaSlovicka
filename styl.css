@@ -1,0 +1,96 @@
+.Heading {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    color: #ffffff;
+    background-color: lightblue;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.GivenWord {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    width: 500px;
+    text-align: center;
+    font-size: 20px;
+    transform: translate(-50%);
+    color: #ffffff;
+    background-color: rgb(3, 102, 28);
+    border-radius: 15px;
+}
+
+.WordBox {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    width: 500px;
+    text-align: center;
+    font-size: 30px;
+    transform: translate(-50%);
+    color: #ffffff;
+    background-color: rgb(3, 102, 28);
+    border-radius: 15px;
+}
+#InputText {
+    background-color: lightblue;
+    border-radius: 10px;
+    padding: 10px;
+    border: 0px;
+    color: rgb(3, 102, 28);
+    font-size: 25px;
+}
+
+.EBtn {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    width: 250px;
+    text-align: center;
+    font-size: 30px;
+    transform: translate(-50%);
+    color: #ffffff;
+    background-color: rgb(3, 102, 28);
+    border-radius: 15px;
+}
+#A {
+    left: 43.25%;
+}
+#O {
+   left: 56.8%;
+}
+
+.Submit {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 500px;
+    text-align: center;
+    font-size: 30px;
+    transform: translate(-50%);
+    color: #ffffff;
+    background-color: rgb(3, 102, 28);
+    border-radius: 15px;
+}
+#Submit {
+    padding: 10px;
+    border-radius: 15px;
+    color: #ffffff;
+    background-color: rgb(3, 102, 28);
+    width: 500px;
+}
+
+.Text {
+    font-family: Roboto;
+}
+#Tutorial {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%);
+    color: #ffffff;
+    background-color: lightblue;
+    padding: 10px;
+    border-radius: 15px;
+}

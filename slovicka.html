@@ -1,0 +1,39 @@
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NemcinaSlovicka</title>
+    <script src="system.js" defer></script>
+    <link rel="stylesheet" href="styl.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body background="Background.jpg">
+    <section class="Top">
+        <h1 class="Heading">Vyzkoušej si, jak dobře umíš německá slovíčka!</h1>
+    </section>
+
+    <section class="Tutorial">
+        <p class="Text" id="Tutorial">Slovo, které je napsané v češtině napiš do boxu pod ním německy. Cílem hry je naučit se německá slovíčka.</p>
+    </section>
+    
+    <section class="GivenWord">
+        <p class="Text" id="GivenWord">vzhled</p>
+    </section>
+
+    <section class="WordBox">
+        <input type="text" id="InputText" class="Text">
+    </section>
+
+    <section class="Help">
+        <button class="Text EBtn" id="A" onclick=AddA()>ä</button>
+        <button class="Text EBtn" id="O" onclick=AddO()>ö</button>
+    </section>
+
+    <section class="Submit">
+        <button id="Submit" class="Text" onclick=SubmitAnswer() onmouseenter=HoverEnter() onmouseleave=HoverExit()>Check</button>
+    </section>
+
+</body>
+</html>
