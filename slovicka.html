@@ -1,0 +1,55 @@
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NemcinaSlovicka</title>
+    <script src="system.js" defer></script>
+    <link rel="stylesheet" href="styl.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body background="NewBackground.jpg">
+    <section class="Top">
+        <h1 class="Heading">Test z německých slovíček</h1>
+    </section>
+
+    <section class="Tutorial">
+        <p class="Text" id="Tutorial">Slovo, které je napsané v češtině, napiš do boxu pod ním německy. Cílem hry je naučit se německá slovíčka.</p>
+    </section>
+    
+    <section class="GivenWord">
+        <p class="Text" id="GivenWord">vzhled</p>
+    </section>
+
+    <section class="WordBox">
+        <input type="text" id="InputText" class="Text" onfocus=AddFocus() onblur=RemoveFocus()>
+    </section>
+
+    <section class="Help">
+        <button class="Text EBtn" id="A" onclick=AddA()>ä</button>
+        <button class="Text EBtn" id="O" onclick=AddO()>ö</button>
+        <button class="Text EBtn" id="U" onclick=AddU()>ü</button>
+        <button class="Text EBtn" id="SS" onclick=AddSS()>ß</button>
+        <p class="Text ALT" id="AltSS">Alt + 0223</p>
+        <p class="Text ALT" id="AltO">Alt + 0246</p>
+        <p class="Text ALT" id="AltA">Alt + 0228</p>
+        <p class="Text ALT" id="AltU">Alt + 0252</p>
+
+        <button class="Text ALT" id="UpperCase" onclick=UpperCase()>Velká písmena</button>
+
+    </section>
+
+    <section class="Submit">
+        <button id="Submit" class="Text" onclick=SubmitAnswer() onmouseenter=HoverEnter() onmouseleave=HoverExit()>Zkontrolovat</button>
+        <button id="Hint" class="Text" onclick=GiveHint() onmouseenter=HoverEnter2() onmouseleave=HoverExit2()>Nápověda</button>
+    </section>
+
+    <section class="Goals">
+        <p class="Text" id="Streak">Série správných odpovědí bez nápověd: 0</p>
+        <p class="Text" id="CorrectAnswers">Správné odpovědi bez nápověd: 0</p>
+        <p class="Text" id="IncorrectAnswers">Nesprávné odpovědi: 0</p>
+    </section>
+
+</body>
+</html>

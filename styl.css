@@ -3,21 +3,34 @@
     left: 50%;
     transform: translate(-50%);
     color: #ffffff;
-    background-color: lightblue;
-    padding: 10px;
+    /*background-color: rgba(255, 255, 255, 0.13);*/
+    /*padding: 10px;*/
     border-radius: 15px;
+    text-align: center;
 }
-
+#Tutorial {
+    position: absolute;
+    left: 50%;
+    top: 6%;
+    transform: translate(-50%);
+    color: #ffffff;
+    /*background-color: rgba(255, 255, 255, 0.13);*/
+    /*padding: 10px;*/
+    border-radius: 15px;
+    font-weight: bold;
+    text-align: center;
+}
 .GivenWord {
     position: absolute;
     left: 50%;
-    top: 20%;
+    top: 12%;
     width: 500px;
     text-align: center;
-    font-size: 20px;
+    font-size: 35px;
+    font-weight: bold;
     transform: translate(-50%);
-    color: #ffffff;
-    background-color: rgb(3, 102, 28);
+    color: #000000;
+    background-color: rgb(255, 255, 255);
     border-radius: 15px;
 }
 
@@ -29,17 +42,43 @@
     text-align: center;
     font-size: 30px;
     transform: translate(-50%);
-    color: #ffffff;
-    background-color: rgb(3, 102, 28);
+    color: #000000;
+    background-color: rgb(255, 255, 255);
     border-radius: 15px;
 }
 #InputText {
-    background-color: lightblue;
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
     padding: 10px;
     border: 0px;
-    color: rgb(3, 102, 28);
+   /* color: rgb(3, 102, 28); */
+    color: rgb(0, 0, 0);
     font-size: 25px;
+    width: 500px;
+}
+.Goals {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 70%;
+    background-color: rgba(255, 255, 255, 0.13);
+    width: 500px;
+    border-radius: 15px;
+}
+#Streak {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+#CorrectAnswers {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+#IncorrectAnswers {
+    color: white;
+    font-weight: bold;
+    text-align: center;
 }
 
 .EBtn {
@@ -51,7 +90,7 @@
     font-size: 30px;
     transform: translate(-50%);
     color: #ffffff;
-    background-color: rgb(3, 102, 28);
+    background-color: rgb(0, 0, 0);
     border-radius: 15px;
 }
 #A {
@@ -60,42 +99,83 @@
 #O {
    left: 56.8%;
 }
+#U {
+    left: 29.7%;
+}
+#SS {
+    left: 71%;
+}
+.ALT {
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 50px;
+    border-radius: 15px;
+    color: black;
+    position: absolute;
+    font-weight: bold;
+}
+#AltSS {
+    left: 71%;
+    top: 40%;
+    transform: translate(-50%);
+}
+#AltO {
+    left: 56.8%;
+    top: 40%;
+    transform: translate(-50%);
+}
+#AltA {
+    left: 43.25%;
+    top: 40%;
+    transform: translate(-50%);
+}
+#AltU {
+    left: 29.7%;
+    top: 40%;
+    transform: translate(-50%);
+}
+#UpperCase {
+    left: 89%;
+    top: 40%;
+    transform: translate(-50%);
+    width: 250px;
+    height: 115px;
+    font-size: 35px;
+}
 
 .Submit {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 60%;
     width: 500px;
     text-align: center;
     font-size: 30px;
     transform: translate(-50%);
     color: #ffffff;
-    background-color: rgb(3, 102, 28);
+    background-color: rgba(3, 102, 28, 0);
     border-radius: 15px;
 }
 #Submit {
     padding: 10px;
     border-radius: 15px;
     color: #ffffff;
-    background-color: rgb(3, 102, 28);
+    background-color: rgb(0, 0, 0);
+    width: 500px;
+}
+#Hint {
+    padding: 10px;
+    border-radius: 15px;
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
     width: 500px;
 }
 
 .Text {
     font-family: Roboto;
 }
-#Tutorial {
-    position: absolute;
-    left: 50%;
-    top: 10%;
-    transform: translate(-50%);
-    color: #ffffff;
-    background-color: lightblue;
-    padding: 10px;
-    border-radius: 15px;
-}
 
-@media screen and (max-width:600px) {
+
+@media screen and (max-width:1000px) {
     h1{
         font-size: 12px;
         line-height: 20px;
@@ -103,6 +183,14 @@
     p{
         font-size: 10px;
         line-height: 20px;
+    }
+    #Tutorial{
+        width: 250px;
+        height: 10px;
+    }
+    .Heading{
+        width: 275px;
+        height: 10px;
     }
     .WordBox{
         top: 30%;
@@ -112,14 +200,52 @@
         width: 250px;
     }
     .GivenWord{
-        top: 22%;
+        top: 14.7%;
         width: 250px;
+    }
+    #GivenWord{
+        font-size: 25px;
     }
     #A{
         width: 50px;
+        aspect-ratio: 1/1;
     }
     #O{
         width: 50px;
+        aspect-ratio: 1/1;
+    }
+    #U{
+        width: 50px;
+        aspect-ratio: 1/1;
+    }
+    #SS{
+        width: 50px;
+        aspect-ratio: 1/1;
+    }
+    .ALT{
+        font-size: 12px;
+        width: 50px;
+        aspect-ratio: 1/1;
+    }
+    #AltSS{
+        left: 71%;
+        top: 45%;
+        transform: translate(-50%);
+    }
+    #AltO{
+        left: 56.8%;
+        top: 45%;
+        transform: translate(-50%);
+    }
+    #AltA{
+        left: 43.25%;
+        top: 45%;
+        transform: translate(-50%);
+    }
+    #AltU{
+        left: 29.7%;
+        top: 45%;
+        transform: translate(-50%);
     }
     .Submit{
         width: 250px;
@@ -127,5 +253,18 @@
     }
     #Submit{
         width: 250px;
+    }
+    #Hint{
+        width: 250px;
+    }
+    #UpperCase{
+        width: 70px;
+        height: 50px;
+        font-size: 15px;
+    }
+    .Goals{
+        width: 250px;
+        font-size: 15px;
+        top: 79%;
     }
 }
