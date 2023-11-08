@@ -188,10 +188,12 @@
     #Tutorial{
         width: 250px;
         height: 10px;
+        line-height: 15px;
     }
     .Heading{
         width: 275px;
         height: 10px;
+        line-height: 15px;
     }
     .WordBox{
         top: 30%;
