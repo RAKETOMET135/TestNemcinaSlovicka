@@ -7,6 +7,7 @@ var iaBar = document.getElementById("IncorrectAnswers")
 let czWords = []
 let deWords = []
 let incorrectWords = []
+let wordFrequency = []
 var choseWordId = 0
 var lastWordId = -1 //0 is first index of list
 var streak = 0
@@ -27,6 +28,7 @@ http.onload = function(){
         for(var word of data.words){
             czWords.push(word.cz)
             deWords.push(word.de)
+            wordFrequency.push(0)
         }
         OnStartup()
     }
@@ -107,16 +109,41 @@ function GetRandomWord(){
         choseWordId = wordId
    }
    else{
-        var wordId = Math.floor(Math.random() * (czWords.length))
-        if (lastWordId == wordId){
-            while (lastWordId == wordId){
-                wordId = Math.floor(Math.random() * (czWords.length))
+        var notUsedWordChance = Math.floor(Math.random() * (2))
+        if (notUsedWordChance > 0){
+            Array.min = function(array){
+                return Math.min.apply(Math, array);
+            };
+            var minUsedAmnt = Array.min(wordFrequency)
+            //var maxUsedAmnt = Array.max(wordFrequency)
+            var wordId = Math.floor(Math.random() * (czWords.length))
+            var t = 0
+
+            for (var usedAmnt of wordFrequency){
+                if (minUsedAmnt == usedAmnt){
+                    wordId = t
+                }
+                t += 1
             }
+            var choseWord = czWords[wordId]
+            lastWordId = wordId
+            choseWordId = wordId
         }
-        var choseWord = czWords[wordId]
-        lastWordId = wordId
-        choseWordId = wordId
+        else{
+            var wordId = Math.floor(Math.random() * (czWords.length))
+            if (lastWordId == wordId){
+                while (lastWordId == wordId){
+                    wordId = Math.floor(Math.random() * (czWords.length))
+                }
+            }
+            var choseWord = czWords[wordId]
+            lastWordId = wordId
+            choseWordId = wordId
+        }
    }
+   wordFrequency[choseWordId] += 1
+  // console.log(wordFrequency)
+
    return choseWord
 }
 
@@ -221,6 +248,7 @@ function UpperCase(){
 }
 
 function AddA(){
+    if (checkMode) return
     var inputWord = document.getElementById("InputText")
     if (upperCase){
         inputWord.value += "Ä"
@@ -231,6 +259,7 @@ function AddA(){
 }
 
 function AddO(){
+    if (checkMode) return
     var inputWord = document.getElementById("InputText")
     if (upperCase){
         inputWord.value += "Ö"
@@ -241,11 +270,13 @@ function AddO(){
 }
 
 function AddSS(){
+    if (checkMode) return
     var inputWord = document.getElementById("InputText")
     inputWord.value += "ß"
 }
 
 function AddU(){
+    if (checkMode) return
     var inputWord = document.getElementById("InputText")
     if (upperCase){
         inputWord.value += "Ü"
