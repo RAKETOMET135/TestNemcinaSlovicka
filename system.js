@@ -43,6 +43,14 @@ function OnStartup(){
     GenerateNewWord()
 }
 
+function CheckUserScreenWidth(){
+    var narrowDevice = false
+    if (window.screen.width <= 1000){
+        narrowDevice = true
+    }
+    return narrowDevice
+}
+
 function UpdateBars(){
     streakBar.innerText = "Série správných odpovědí bez nápověd: " + streak
     caBar.innerText = "Správné odpovědi bez nápověd: " + correctAnswers
@@ -193,7 +201,12 @@ function CorrectAnswer(userInputBar, correctAnswer){
 }
 function WrongAnswer(userInputBar, correctAnswer){
     userInputBar.readOnly = true
-    userInputBar.value = correctAnswer
+    if (!CheckUserScreenWidth() && !userInputBar.value == ""){
+        userInputBar.value = userInputBar.value + " => " + correctAnswer
+    }
+    else{
+        userInputBar.value = correctAnswer
+    }
     userInputBar.style.color = "rgb(255, 0, 0)"
     submitButton.innerText = "Další"
     checkMode = true

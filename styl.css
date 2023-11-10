@@ -35,6 +35,7 @@
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
 }
+
 .WordBox {
     position: absolute;
     left: 50%;
@@ -86,7 +87,7 @@
     position: absolute;
     left: 50%;
     top: 40%;
-    width: 250px;
+    width: 125px;
     text-align: center;
     font-size: 30px;
     transform: translate(-50%);
@@ -95,52 +96,54 @@
     border-radius: 15px;
 }
 #A {
-    left: 43.25%;
+    left: 46.55%;
 }
 #O {
-   left: 56.8%;
+   left: 53.25%;
 }
 #U {
-    left: 29.7%;
+    left: 39.8%;
 }
 #SS {
-    left: 71%;
+    left: 60%;
 }
 .ALT {
     background-color: rgb(255, 255, 255);
     text-align: center;
-    font-size: 50px;
+    font-size: 27.8px;
     border-radius: 15px;
     color: black;
     position: absolute;
     font-weight: bold;
+    width: 125px;
+    height: 62.5px;
 }
 #AltSS {
-    left: 71%;
-    top: 40%;
+    left: 60%;
+    top: 42%;
     transform: translate(-50%);
 }
 #AltO {
-    left: 56.8%;
-    top: 40%;
+    left: 53.25%;
+    top: 42%;
     transform: translate(-50%);
 }
 #AltA {
-    left: 43.25%;
-    top: 40%;
+    left: 46.55%;
+    top: 42%;
     transform: translate(-50%);
 }
 #AltU {
-    left: 29.7%;
-    top: 40%;
+    left: 39.8%;
+    top: 42%;
     transform: translate(-50%);
 }
 #UpperCase {
-    left: 89%;
+    left: 72%;
     top: 40%;
     transform: translate(-50%);
     width: 250px;
-    height: 115px;
+    height: 112px;
     font-size: 35px;
 }
 
@@ -188,12 +191,10 @@
     #Tutorial{
         width: 250px;
         height: 10px;
-        line-height: 15px;
     }
     .Heading{
         width: 275px;
         height: 10px;
-        line-height: 15px;
     }
     .WordBox{
         top: 30%;
@@ -212,23 +213,27 @@
     #A{
         width: 50px;
         aspect-ratio: 1/1;
+        left: 43.25%;
     }
     #O{
         width: 50px;
         aspect-ratio: 1/1;
+        left: 56.8%;
     }
     #U{
         width: 50px;
         aspect-ratio: 1/1;
+        left: 29.7%;
     }
     #SS{
         width: 50px;
         aspect-ratio: 1/1;
+        left: 71%;
     }
     .ALT{
         font-size: 12px;
         width: 50px;
-        aspect-ratio: 1/1;
+        height: 50px;
     }
     #AltSS{
         left: 71%;
@@ -264,6 +269,7 @@
         width: 70px;
         height: 50px;
         font-size: 15px;
+        left: 89%;
     }
     .Goals{
         width: 250px;
