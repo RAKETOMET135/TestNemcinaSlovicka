@@ -57,7 +57,7 @@
 .Warning{
     position: absolute;
     left: 42%;
-    top: 87%;
+    top: 89%;
 }
 .WarningText{
     color: white;
@@ -305,10 +305,10 @@
         top: 72%;
     }
     .Selection{
-        top: 85%;
-        left: 20%;
+        top: 87%;
+        left: 18%;
     }
     .Warning{
-        left: 28%;
+        left: 26%;
     }
 }
