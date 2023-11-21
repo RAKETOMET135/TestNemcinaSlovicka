@@ -36,6 +36,34 @@
     border-radius: 15px;
 }
 
+.Selection{
+    position: absolute;
+    right: 5%;
+    top: 6%;
+}
+#category{
+    background-color: white;
+    width: 150px;
+    height: 25px;
+    border-radius: 8%;
+}
+#categoryInfo{
+    color: white;
+}
+.Option{
+    color: #000000;
+}
+
+.Warning{
+    position: absolute;
+    left: 42%;
+    top: 87%;
+}
+.WarningText{
+    color: white;
+}
+
+
 .WordBox {
     position: absolute;
     left: 50%;
@@ -274,6 +302,13 @@
     .Goals{
         width: 250px;
         font-size: 15px;
-        top: 79%;
+        top: 72%;
+    }
+    .Selection{
+        top: 85%;
+        left: 20%;
+    }
+    .Warning{
+        left: 28%;
     }
 }

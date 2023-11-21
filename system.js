@@ -19,28 +19,61 @@ var inputFocus = false
 var checkMode = false
 
 //startup
-let http = new XMLHttpRequest();
-http.open('get', 'words.json', true)
-http.send()
-http.onload = function(){
-    if (this.readyState == 4 && this.status == 200){
-        data = JSON.parse(this.responseText)
-        for(var word of data.words){
-            czWords.push(word.cz)
-            deWords.push(word.de)
-            wordFrequency.push(0)
-        }
-        OnStartup()
-    }
-}
+LoadFile("lekce7.json")
 
 document.body.addEventListener("keydown", (key) =>{
     OnKeyDown(key)
 })
 
 //functions
+function Reset(){
+    streak = 0; correctAnswers = 0; incorrectAnswers = 0; UpdateBars()
+    checkMode = false
+    czWords = []
+    deWords = []
+    incorrectWords = []
+    wordFrequency = []
+    lastWordId = -1
+    choseWordId = 0
+    hintState = 0
+    submitButton.innerText = "Zkontrolovat"
+    var inputWord = document.getElementById("InputText")
+    inputWord.value = ""
+    inputWord.style.color = "black"
+    inputWord.readOnly = false
+
+    return
+}
+
+function LoadFile(fileName){
+    Reset()
+
+    let http = new XMLHttpRequest();
+    http.open('get', fileName, true)
+    http.send()
+    http.onload = function(){
+        if (this.readyState == 4 && this.status == 200){
+            data = JSON.parse(this.responseText)
+            for(var word of data.words){
+                czWords.push(word.cz)
+                deWords.push(word.de)
+                wordFrequency.push(0)
+            }
+            OnStartup()
+        }
+    }
+    return
+}
+
 function OnStartup(){
     GenerateNewWord()
+}
+
+function Category(){
+    var category = document.getElementById("category")
+    var chosedJSONFileName = category.value + ".json"
+
+    LoadFile(chosedJSONFileName)
 }
 
 function CheckUserScreenWidth(){

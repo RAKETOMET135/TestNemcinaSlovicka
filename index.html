@@ -11,7 +11,7 @@
 </head>
 <body background="NewBackground.jpg">
     <section class="Top">
-        <h1 class="Heading">Otestuj svoje vědomosti z německých slovíček!</h1>
+        <h1 class="Heading">Test z německých slovíček</h1>
     </section>
 
     <section class="Tutorial">
@@ -49,6 +49,19 @@
         <p class="Text" id="Streak">Série správných odpovědí bez nápověd: 0</p>
         <p class="Text" id="CorrectAnswers">Správné odpovědi bez nápověd: 0</p>
         <p class="Text" id="IncorrectAnswers">Nesprávné odpovědi: 0</p>
+    </section>
+
+    <section class="Selection">
+        <label for="category" id="categoryInfo" class="Text">Oblast slovíček:</label>
+
+        <select name="category" id="category" onchange=Category()>
+            <option value="lekce7" class="Option">Lekce 7</option>
+            <option value="lekce7vyber" class="Option">Lekce 7 - výběr</option>
+        </select>
+    </section>
+
+    <section class="Warning">
+        <p class="Text WarningText">Tato webová stránka slouží jen pro studium.</p>
     </section>
 
 </body>
