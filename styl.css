@@ -173,6 +173,27 @@
     width: 250px;
     height: 112px;
     font-size: 35px;
+    background-color: #000000;
+    color: #ffffff;
+}
+#FlipWords {
+    left: 72%;
+    top: 30%;
+    transform: translate(-50%);
+    width: 250px;
+    height: 56px;
+    font-size: 25px;
+    background-color: #000000;
+    color: #ffffff;
+}
+#SkipAnswer {
+    position: absolute;
+    left: 33%;
+    top: 40%;
+    transform: translate(-50%);
+    width: 75px;
+    height: 112px;
+    font-size: 35px;
 }
 
 .Submit {
@@ -226,14 +247,14 @@
     }
     .WordBox{
         top: 30%;
-        width: 250px;
+        width: 230px;
     }
     #InputText{
-        width: 250px;
+        width: 230px;
     }
     .GivenWord{
         top: 14.7%;
-        width: 250px;
+        width: 230px;
     }
     #GivenWord{
         font-size: 25px;
@@ -310,5 +331,17 @@
     }
     .Warning{
         left: 26%;
+    }
+    #FlipWords{
+        width: 50px;
+        height: 50px;
+        font-size: 11px;
+        left: 89%;
+    }
+    #SkipAnswer{
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+        left: 15%;
     }
 }

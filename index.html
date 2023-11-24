@@ -37,6 +37,9 @@
         <p class="Text ALT" id="AltU">Alt + 0252</p>
 
         <button class="Text ALT" id="UpperCase" onclick=UpperCase()>Velká písmena</button>
+        <button class="Text ALT" id="FlipWords" onclick=FlipWords()></button>
+
+        <button class="Text ALT" id="SkipAnswer" onclick=SkipAnswer()>✓</button>
 
     </section>
 
@@ -55,6 +58,8 @@
         <label for="category" id="categoryInfo" class="Text">Oblast slovíček:</label>
 
         <select name="category" id="category" onchange=Category()>
+            <option value="lekce8_str102-106">Lekce 8 - strana 102-106</option>
+            <option value="lekce8" class="Option">Lekce 8</option>
             <option value="lekce7" class="Option">Lekce 7</option>
             <option value="lekce7vyber" class="Option">Lekce 7 - výběr</option>
         </select>
