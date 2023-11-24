@@ -86,6 +86,7 @@ function LoadFile(fileName){
 
 async function AutoFocus(){
     return
+    
     if (!inputFocus){
         return
     }
