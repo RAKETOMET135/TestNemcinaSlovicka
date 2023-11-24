@@ -90,6 +90,7 @@ async function AutoFocus(){
     }
     var input = document.getElementById("InputText")
     input.focus()
+    inputFocus = true
     await Wait(0.5)
     inputFocus = true
     return
