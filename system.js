@@ -575,7 +575,7 @@ function AddFocus(){
     inputFocus = true
 }
 async function RemoveFocus(){
-    await Wait(0.5)
+   // await Wait(0.5)
     inputFocus = false
 }
 function OnKeyDown(key){
