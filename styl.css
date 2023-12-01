@@ -1,3 +1,7 @@
+*{
+    cursor: url("Cursors/DefualtCursor.png"), auto;
+}
+
 .Heading {
     position: absolute;
     left: 50%;
@@ -31,9 +35,18 @@
     font-size: 35px;
     font-weight: bold;
     transform: translate(-50%);
-    color: #000000;
+    color: #ffffff;
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
+    background-image: url(Images/BlueCheckerDarker.png);
+    border: #ffffff 2px solid;
+}
+
+body{
+    animation: moveIt 120s linear infinite;
+}
+@keyframes moveIt{
+    100% {background-position: 1280px -1280px;}
 }
 
 .Selection{
@@ -46,7 +59,23 @@
     width: 150px;
     height: 25px;
     border-radius: 8%;
+    background-image: url(Images/BlueCheckerDarker.png);
+    border: #ffffff 2px solid;
+    color: #ffffff;
+    outline: none;
+
+    cursor: url("Cursors/ClickCursor.png"), auto;
 }
+#category:focus{
+    border-color: #12afff;
+}
+.items{
+    background-color: #12afff;
+    color: #ffffff;
+
+    cursor: url("Cursors/ClickCursor.png"), auto;
+}
+
 #categoryInfo{
     color: white;
 }
@@ -70,51 +99,111 @@
     top: 30%;
     width: 500px;
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
     transform: translate(-50%);
-    color: #000000;
+    color: #ffffff;
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
 }
 #InputText {
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    padding: 10px;
+    padding: 8px;
     border: 0px;
    /* color: rgb(3, 102, 28); */
-    color: rgb(0, 0, 0);
+    color: #ffffff;
     font-size: 25px;
     width: 500px;
-}
-.Goals {
     position: absolute;
     left: 50%;
+    top: 150%;
     transform: translate(-50%);
-    top: 70%;
-    background-color: rgba(255, 255, 255, 0.13);
-    width: 500px;
+    background-image: url(Images/YellowChecker2_Dark.jpg);
+    border: #ffffff 2px solid;
+
+    cursor: url("Cursors/ClickCursor.png"), auto;
+    
+}
+#InputText:focus {
+    outline: none;
+    border-color: yellow;
+    
+    cursor: url("Cursors/DefualtCursor.png"), auto;
+}
+
+.Goals {
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%);*/
+    /*top: 50%;*/
+    /*background-color: rgba(255, 255, 255, 0.13);*/
+    /*width: 500px;*/
     border-radius: 15px;
 }
 #Streak {
     color: white;
     font-weight: bold;
     text-align: center;
+    position: absolute;
+    font-size: 25px;
+    top: 62.5%;
+    left: 51.4%;
+    transform: translate(-50%);
 }
 #CorrectAnswers {
     color: white;
     font-weight: bold;
     text-align: center;
+    display: inline;
+    position: absolute;
+    font-size: 25px;
+    top: 57%;
+    left: 48%;
+    color: white;
 }
 #IncorrectAnswers {
     color: white;
     font-weight: bold;
     text-align: center;
+    position: absolute;
+    font-size: 25px;
+    top: 57%;
+    left: 54%;
+}
+.CorrectIcon{
+    height: 25px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 60%;
+    left: 45%;
+}
+.IncorrectIcon{
+    height: 25px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 60%;
+    left: 50.8%;
+}
+.Streak{
+    height: 35px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 65%;
+    left: 48.4%;
+    transform: translate(-50%);
+}
+
+.Help{
+    position: absolute;
+    top: 45%;
+    left: 51%;
+    transform: translate(-50%);
 }
 
 .EBtn {
     position: absolute;
-    left: 50%;
-    top: 40%;
+    /*left: 50%;*/
+    /*top: 40%;*/
     width: 125px;
     text-align: center;
     font-size: 30px;
@@ -122,18 +211,21 @@
     color: #ffffff;
     background-color: rgb(0, 0, 0);
     border-radius: 15px;
+
+    cursor: url("Cursors/ClickCursor.png"), auto;
 }
 #A {
-    left: 46.55%;
+    left: -150%;
 }
+
 #O {
-   left: 53.25%;
+    left: -40%;
 }
 #U {
-    left: 39.8%;
+    left: 70%;
 }
 #SS {
-    left: 60%;
+    left: 180%;
 }
 .ALT {
     background-color: rgb(255, 255, 255);
@@ -150,50 +242,64 @@
     left: 60%;
     top: 42%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 #AltO {
     left: 53.25%;
     top: 42%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 #AltA {
     left: 46.55%;
     top: 42%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 #AltU {
     left: 39.8%;
     top: 42%;
     transform: translate(-50%);
+    visibility: hidden;
 }
 #UpperCase {
-    left: 72%;
-    top: 40%;
+    left: 180%;
+    top: 110%;
     transform: translate(-50%);
-    width: 250px;
-    height: 112px;
+    width: 50px;
+    height: 50px;
     font-size: 35px;
     background-color: #000000;
     color: #ffffff;
+    border-color: #ffffff;
+    background-image: url(Images/BlueChecker.png);
+    font-weight: bold;
+
+    cursor: url("Cursors/ClickCursor.png"), auto;
 }
 #FlipWords {
-    left: 72%;
-    top: 30%;
+    left: 70%;
     transform: translate(-50%);
-    width: 250px;
-    height: 56px;
+    width: 50px;
+    height: 50px;
     font-size: 25px;
     background-color: #000000;
     color: #ffffff;
+    top: 110%;
+
+    cursor: url("Cursors/ClickCursor.png"), auto;
 }
 #SkipAnswer {
     position: absolute;
-    left: 33%;
-    top: 40%;
+    left: -40%;
     transform: translate(-50%);
-    width: 75px;
-    height: 112px;
-    font-size: 35px;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    top: 110%;
+    font-weight: bold;
+
+    cursor: url("Cursors/ClickCursor.png"), auto;
 }
 
 .Submit {
@@ -208,19 +314,81 @@
     background-color: rgba(3, 102, 28, 0);
     border-radius: 15px;
 }
-#Submit {
-    padding: 10px;
-    border-radius: 15px;
+.Design {
+    border-color: #ffffff;
+    background-color: rgb(17, 136, 216);
+    background-image: url(Images/BlueChecker.png);
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
     color: #ffffff;
-    background-color: rgb(0, 0, 0);
-    width: 500px;
 }
-#Hint {
-    padding: 10px;
+#Submit {
+    /*padding: 10px;*/
     border-radius: 15px;
     color: #ffffff;
-    background-color: rgb(0, 0, 0);
-    width: 500px;
+    background-color: rgb(24, 216, 17);
+    background-image: url(Images/GreenChecker.png);
+    border-color: #ffffff;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: 150%;
+    left: 102%;
+
+    cursor: url("Cursors/ClickCursor.png"), auto;
+}
+.Button:hover {
+    transform:scale(1.1,1.1);
+    -webkit-transform:scale(1.1,1.1);
+    -moz-transform:scale(1.1,1.1);
+}
+
+#Hint {
+    /*padding: 10px;*/
+    border-radius: 15px;
+    color: #ffffff;
+    border-color: #ffffff;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: rgb(17, 136, 216);
+    background-image: url(Images/BlueChecker.png);
+    text-align: center;
+    position: relative;
+    left: -200%;
+    transform: translate(0%, 110%);
+    visibility: hidden;
+
+    cursor: url("Cursors/ClickCursor.png"), auto;
+}
+#HintMobile {
+    position: absolute;
+    /*visibility: hidden;*/
+    border-radius: 15px;
+    top: 110%;
+    left: -200%;
+
+    cursor: url("Cursors/ClickCursor.png"), auto;
+}
+
+
+#UpperCase:hover {
+    background-image: url(Images/GreenChecker.png);
+}
+#Hint:hover {
+    background-image: url(Images/GreenChecker.png);
+    rotate: 10deg;
+}
+#HintMobile:hover {
+    background-image: url(Images/GreenChecker.png);
+    top: 102%;
 }
 
 .Text {
@@ -228,13 +396,15 @@
 }
 
 
+
+
 @media screen and (max-width:1000px) {
     h1{
-        font-size: 12px;
+        font-size: 17px;
         line-height: 20px;
     }
     p{
-        font-size: 10px;
+        font-size: 12px;
         line-height: 20px;
     }
     #Tutorial{
@@ -251,6 +421,7 @@
     }
     #InputText{
         width: 230px;
+        top: 175%;
     }
     .GivenWord{
         top: 14.7%;
@@ -262,22 +433,22 @@
     #A{
         width: 50px;
         aspect-ratio: 1/1;
-        left: 43.25%;
+        left: 36%;
     }
     #O{
         width: 50px;
         aspect-ratio: 1/1;
-        left: 56.8%;
+        left: 60%;
     }
     #U{
         width: 50px;
         aspect-ratio: 1/1;
-        left: 29.7%;
+        left: 12%;
     }
     #SS{
         width: 50px;
         aspect-ratio: 1/1;
-        left: 71%;
+        left: 85%;
     }
     .ALT{
         font-size: 12px;
@@ -309,39 +480,87 @@
         left: 50%;
     }
     #Submit{
-        width: 250px;
+        width: 50px;
+        left: 102%;
+        top: 175%;
     }
     #Hint{
         width: 250px;
+        top: 50%;
+        left: 2%;
+        visibility: hidden;
     }
     #UpperCase{
-        width: 70px;
+        width: 50px;
         height: 50px;
-        font-size: 15px;
-        left: 89%;
+        font-size: 30px;
+        left: 85%;
     }
     .Goals{
         width: 250px;
         font-size: 15px;
         top: 72%;
     }
+    .IncorrectIcon{
+        left: 54%;
+        top: 67%;
+    }
+    .CorrectIcon{
+        left: 23%;
+        top: 67%;
+    }
+    .Streak{
+        left: 42%;
+        top: 72%;
+    }
+    #Streak{
+        left: 57%;
+        top: 69.5%;
+    }
+    #CorrectAnswers{
+        left: 39.65%;
+        top: 64%;
+    }
+    #IncorrectAnswers{
+        left: 71.5%;
+        top: 64%;
+    }
     .Selection{
         top: 87%;
         left: 18%;
     }
     .Warning{
-        left: 26%;
+        left: 50%;
+        transform: translate(-50%);
+    }
+    .WarningText{
+        font-size: 9px;
     }
     #FlipWords{
         width: 50px;
         height: 50px;
-        font-size: 11px;
-        left: 89%;
+        font-size: 25px;
+        left: 60%;
     }
     #SkipAnswer{
         width: 50px;
         height: 50px;
         font-size: 25px;
-        left: 15%;
+        left: 36%;
     }
+    #HintMobile{
+        width: 50px;
+        aspect-ratio: 1/1;
+        visibility: visible;
+        top: 110%;
+        left: 2%;
+    }
+    .Help{
+        top: 50%;
+    }
+}
+
+.Button2:hover {
+    background-image: url(Images/GreenChecker.png);
+    rotate: 10deg;
 }

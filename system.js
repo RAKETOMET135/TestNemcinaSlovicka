@@ -49,10 +49,10 @@ function Reset(){
     lastWordId = -1
     choseWordId = 0
     hintState = 0
-    submitButton.innerText = "Zkontrolovat"
+    submitButton.innerText = "✓"
     var inputWord = document.getElementById("InputText")
     inputWord.value = ""
-    inputWord.style.color = "black"
+    inputWord.style.color = "white"
     inputWord.readOnly = false
 
     return
@@ -60,6 +60,7 @@ function Reset(){
 
 function LoadFile(fileName){
     Reset()
+    fileName = "Lekce/" + fileName
 
     let http = new XMLHttpRequest();
     http.open('get', fileName, true)
@@ -84,26 +85,80 @@ function LoadFile(fileName){
     return
 }
 
+function UnFocusColorChange(){
+    if (!inputFocus){
+        document.getElementById("InputText").style.borderColor = "white"
+    }
+    else{
+        document.getElementById("InputText").style.borderColor = "yellow"
+    }
+}
+
 async function AutoFocus(){
     return
-    
+
     if (!inputFocus){
         return
     }
     var input = document.getElementById("InputText")
     input.focus()
-    inputFocus = true
     await Wait(0.5)
     inputFocus = true
     return
 }
 
+async function DynamicAnswer(ansColor){
+    for (var e of document.getElementsByClassName("Text")){
+        if (e.id == "CorrectAnswers" || e.id == "IncorrectAnswers" || e.id == "Streak" || e.id == "InputText"){
+            continue
+        }
+
+        e.style.color = ansColor
+        e.style.borderColor = ansColor
+    }
+    document.getElementById("InputText").style.borderColor = ansColor
+
+    await Wait(0.15)
+    
+    for (var e of document.getElementsByClassName("Text")){
+        if (e.id == "CorrectAnswers" || e.id == "IncorrectAnswers" || e.id == "Streak" || e.id == "InputText"){
+            continue
+        }
+
+        e.style.color = "#ffffff"
+        e.style.borderColor = "#ffffff"
+    }
+    if (inputFocus){
+        document.getElementById("InputText").style.borderColor = "yellow"
+    }
+    else{
+        document.getElementById("InputText").style.borderColor = "white"
+    }
+}
+
 async function OnClickColor(element){
     element.style.backgroundColor = "#ffffff"
-    element.style.color = "#000000"
+    element.style.color = "transparent"
+    
+    //element.style.transform = "scale(0.5)"
+
     await Wait(0.2)
+    
+    //element.style.transform = "scale(1)"
+
     element.style.backgroundColor = "#000000"
     element.style.color = "#ffffff"
+}
+
+async function ColorChange(element, color){
+    var oldColor = element.style.color
+    element.style.color = color
+    //document.getElementById("CorrectAnswers").style.transform = "scale(1.5)"
+    element.style.transform = "scale(1.5)"
+    await Wait(0.2)
+    //document.getElementById("CorrectAnswers").style.transform = "scale(1)"
+    element.style.transform = "scale(1)"
+    element.style.color = oldColor
 }
 
 async function Wait(seconds){
@@ -113,12 +168,14 @@ async function Wait(seconds){
 function SkipAnswer(){
     var btn = document.getElementById("SkipAnswer")
     if (!skipAnswer){
-        btn.style.color = "#ffffff"
-        btn.style.backgroundColor = "#000000"
+        //btn.style.color = "#ffffff"
+        //btn.style.backgroundColor = "#000000"
+        btn.innerText = "||"
     }
     else{
-        btn.style.color = "#000000"
-        btn.style.backgroundColor = "ffffff"
+        //btn.style.color = "#000000"
+        //btn.style.backgroundColor = "ffffff"
+        btn.innerText = "≪"
     }
     skipAnswer = !skipAnswer
     AutoFocus()
@@ -140,10 +197,10 @@ function FlipWords(){
     lastWordId = -1
     choseWordId = 0
     hintState = 0
-    submitButton.innerText = "Zkontrolovat"
+    submitButton.innerText = "✓"
     var inputWord = document.getElementById("InputText")
     inputWord.value = ""
-    inputWord.style.color = "black"
+    inputWord.style.color = "white"
     inputWord.readOnly = false
     incorrectWords = []
     checkMode = false
@@ -172,9 +229,12 @@ function CheckUserScreenWidth(){
 }
 
 function UpdateBars(){
-    streakBar.innerText = "Série správných odpovědí bez nápověd: " + streak
-    caBar.innerText = "Správné odpovědi bez nápověd: " + correctAnswers
-    iaBar.innerText = "Nesprávné odpovědi: " + incorrectAnswers
+    //streakBar.innerText = "Série správných odpovědí bez nápověd: " + streak
+    //caBar.innerText = "Správné odpovědi bez nápověd: " + correctAnswers
+    //iaBar.innerText = "Nesprávné odpovědi: " + incorrectAnswers
+    streakBar.innerText = streak
+    caBar.innerText = correctAnswers
+    iaBar.innerText = incorrectAnswers
     return
 }
 
@@ -196,11 +256,12 @@ function GiveHint(){
         var finishedHint = deWord.slice(0, len)
         var inputWord = document.getElementById("InputText")
         inputWord.value = finishedHint
+        inputWord.style.color = "rgb(17, 136, 250)"
         hintState += 1
     }
     hintButton.style.backgroundColor = "rgb(0, 0, 0)"
     AutoFocus()
-    OnClickColor(document.getElementById("Hint"))
+    OnClickColor(document.getElementById("HintMobile"))
 }
 
 function AddIncorrectWord(wordId){
@@ -297,11 +358,11 @@ function GetRandomWord(){
 
 function SubmitAnswer(){
     submitButton.style.backgroundColor = "rgb(0, 0, 0)"
-    if (submitButton.innerText == "Další"){
-        submitButton.innerText = "Zkontrolovat"
+    if (submitButton.innerText == "➔"){
+        submitButton.innerText = "✓"
         var inputWord = document.getElementById("InputText")
         inputWord.value = ""
-        inputWord.style.color = "black"
+        inputWord.style.color = "white"
         inputWord.readOnly = false
         checkMode = false
         GenerateNewWord()
@@ -446,18 +507,25 @@ function CorrectAnswer(userInputBar, correctAnswer){
     if (hintState == 0){
         correctAnswers += 1
         streak += 1
+        ColorChange(document.getElementById("CorrectAnswers"), "12ff12")
+        ColorChange(document.getElementById("Streak"), "orange")
+        DynamicAnswer("rgb(0, 255, 100)")
+    }
+    else if (hintState > 0){
+        //DynamicAnswer("rgb(17, 136, 250)")
+        DynamicAnswer("rgb(0, 200, 255)")
     }
     UpdateBars()
     if (!skipAnswer){
         userInputBar.readOnly = true
         userInputBar.style.color = "rgb(0, 255, 0)"
-        submitButton.innerText = "Další"
+        submitButton.innerText = "➔"
         checkMode = true
     }
     else{
         var inputWord = document.getElementById("InputText")
         inputWord.value = ""
-        inputWord.style.color = "black"
+        inputWord.style.color = "white"
         GenerateNewWord()
     }
 }
@@ -470,12 +538,21 @@ function WrongAnswer(userInputBar, correctAnswer){
         userInputBar.value = correctAnswer
     }
     userInputBar.style.color = "rgb(255, 0, 0)"
-    submitButton.innerText = "Další"
+    submitButton.innerText = "➔"
     checkMode = true
+    var c = false
+    if (streak > 0){
+        c = true
+    }
     streak = 0
     incorrectAnswers += 1
+    ColorChange(document.getElementById("IncorrectAnswers"), "ff1212")
+    if (c){
+        ColorChange(document.getElementById("Streak"), "ff1212")
+    }
     UpdateBars()
     AddIncorrectWord(choseWordId)
+    DynamicAnswer("rgb(255, 0, 0)")
 }
 
 function HoverEnter(){
@@ -502,7 +579,7 @@ function UpperCase(){
     var alt_u = document.getElementById("AltU")
 
     if (!upperCase){
-        button.innerText = "Malá písmena"
+        button.innerText = "⇪"
         a.innerText = "Ä"
         o.innerText = "Ö"
         u.innerText = "Ü"
@@ -511,7 +588,7 @@ function UpperCase(){
         alt_u.innerText = "Alt + 0220"
     }
     else{
-        button.innerText = "Velká písmena"  
+        button.innerText = "⇪"  
         a.innerText = "ä"
         o.innerText = "ö"
         u.innerText = "ü"
@@ -534,6 +611,7 @@ function AddA(){
         inputWord.value += "ä"
     }
     AutoFocus()
+    Focus()
     OnClickColor(document.getElementById("A"))
 }
 
@@ -547,6 +625,7 @@ function AddO(){
         inputWord.value += "ö"
     }
     AutoFocus()
+    Focus()
     OnClickColor(document.getElementById("O"))
 }
 
@@ -555,6 +634,7 @@ function AddSS(){
     var inputWord = document.getElementById("InputText")
     inputWord.value += "ß"
     AutoFocus()
+    Focus()
     OnClickColor(document.getElementById("SS"))
 }
 
@@ -568,14 +648,21 @@ function AddU(){
         inputWord.value += "ü"
     }
     AutoFocus()
+    Focus()
     OnClickColor(document.getElementById("U"))
+}
+
+function Focus(){
+    var inputWord = document.getElementById("InputText")
+
+    inputWord.focus()
 }
 
 function AddFocus(){
     inputFocus = true
 }
 async function RemoveFocus(){
-   // await Wait(0.5)
+    //await Wait(0.5)
     inputFocus = false
 }
 function OnKeyDown(key){
