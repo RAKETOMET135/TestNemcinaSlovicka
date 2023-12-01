@@ -2,7 +2,7 @@
     "words":[
         {"cz": "obchod", "de": "das Geschäft", "alt": "der Laden"},
         {"cz": "místo setkání", "de": "der Treffpunkt"},
-        {"cz": "vymyslet, promyslet si", "de": "ausdenken"},
+        {"cz": "vymyslet, promyslet si", "de": "sich ausdenken"},
         {"cz": "procházet se, potulovat se", "de": "bummeln"},
         {"cz": "autobus", "de": "der Bus"},
         {"cz": "potom, nato", "de": "danach"},
@@ -118,6 +118,7 @@
         {"cz": "září", "de": "der September"},
         {"cz": "star, hvězda", "de": "der Star"},
         {"cz": "navrhnout, doporučit", "de": "vorschlagen"},
-        {"cz": "stát se", "de": "werden"}
+        {"cz": "stát se", "de": "werden"},
+        {"cz": "jít pěšky", "de": "zu Fuß gehen"}
     ]
 }
