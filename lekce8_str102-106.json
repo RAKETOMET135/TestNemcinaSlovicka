@@ -32,7 +32,7 @@
         {"cz": "hotel", "de": "das Hotel"},
         {"cz": "Mozartovy koule", "de": "die Mozartkugeln"},
         {"cz": "plán", "de": "der Plan"},
-        {"cz": "byt", "de": "die Wohnung"}
+        {"cz": "byt", "de": "die Wohnung"},
         {"cz": "jít pěšky", "de": "zu Fuß gehen"}
     ]
 }
