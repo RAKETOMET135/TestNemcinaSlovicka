@@ -37,7 +37,73 @@ document.body.addEventListener("keyup", (key) =>{
     OnKeyUp(key)
 })
 
+//ChristmasDesign()
+
 //functions
+function ChristmasDesign(){
+    //background
+    var backgroundImages = 4
+    var bg_rn = Math.floor(Math.random() * (backgroundImages))
+    bg_rn += 1
+    
+    var backgroundName = "Background_" + bg_rn + ".jpg"
+
+    document.body.background = "Images/ChristmasImages/" + backgroundName
+
+    //buttons
+    var buttons = []
+    for (var button of document.getElementsByClassName("EBtn")){
+        buttons.push(button)
+    }
+    for (var button of document.getElementsByClassName("ALT")){
+        buttons.push(button)
+    }
+    buttons.push(document.getElementById("HintMobile"))
+
+    for (var button of buttons){
+        button.style.backgroundImage = "url(Images/ChristmasImages/ButtonBackground.jpg)"
+        button.onmouseenter = function(){
+             this.style.backgroundImage = "url(Images/ChristmasImages/ButtonHoverBackground.jpg)"
+        }
+        button.onmouseleave = function(){
+            this.style.backgroundImage = "url(Images/ChristmasImages/ButtonBackground.jpg)"
+        }
+    }
+
+    submitButton.style.backgroundImage = "url(Images/ChristmasImages/ButtonHoverBackground.jpg)"
+
+    //other
+    var givenWords = document.getElementsByClassName("GivenWord")
+    for (var givenWord of givenWords){
+        givenWord.style.backgroundImage = "url(Images/ChristmasImages/GivenWordBackground.jpg)"
+    }
+    var cetegory = document.getElementById("Category")
+    category.style.backgroundImage = "url(Images/ChristmasImages/ButtonBackground.jpg)"
+    var inputText = document.getElementById("InputText")
+    inputText.style.backgroundImage = "url(Images/ChristmasImages/InputWordBackground.jpg)"
+
+    //decorations
+    if (!CheckUserScreenWidth()){
+        var christmasTree = document.createElement("img")
+        christmasTree.src = "Images/ChristmasImages/ChristmasTree.gif"
+        document.body.appendChild(christmasTree)
+        christmasTree.style.width = "200px"
+        christmasTree.style.height = "200px"
+        christmasTree.style.position = "Absolute"
+        christmasTree.style.right = "5%"
+        christmasTree.style.top = "35%"
+
+        var candyCane = document.createElement("img")
+        candyCane.src = "Images/ChristmasImages/CandyCane.gif"
+        document.body.appendChild(candyCane)
+        candyCane.style.width = "200px"
+        candyCane.style.height = "200px"
+        candyCane.style.position = "Absolute"
+        candyCane.style.left = "5%"
+        candyCane.style.top = "35%"
+    }
+}
+
 function Reset(){
     streak = 0; correctAnswers = 0; incorrectAnswers = 0; UpdateBars()
     checkMode = false
