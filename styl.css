@@ -43,10 +43,10 @@
 }
 
 body{
-    animation: moveIt 120s linear infinite;
+    animation: moveIt 280s linear infinite;
 }
 @keyframes moveIt{
-    100% {background-position: 1280px -1280px;}
+    100% {background-position: 1024px -1024px;}
 }
 
 .Selection{
