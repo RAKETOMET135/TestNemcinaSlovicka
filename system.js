@@ -37,7 +37,7 @@ document.body.addEventListener("keyup", (key) =>{
     OnKeyUp(key)
 })
 
-//ChristmasDesign()
+ChristmasDesign()
 
 //functions
 function ChristmasDesign(){
