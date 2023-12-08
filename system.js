@@ -27,7 +27,7 @@ var shiftHolded = false
 //startup
 flipWords.innerText = "<->"
 
-LoadFile("lekce8_str102-106.json")
+LoadFile("lekce8_str107-108.json")
 
 document.body.addEventListener("keydown", (key) =>{
     OnKeyDown(key)
@@ -37,7 +37,7 @@ document.body.addEventListener("keyup", (key) =>{
     OnKeyUp(key)
 })
 
-ChristmasDesign()
+//ChristmasDesign()
 
 //functions
 function ChristmasDesign(){
