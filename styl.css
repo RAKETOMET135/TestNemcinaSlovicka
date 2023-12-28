@@ -1,30 +1,62 @@
+/*element design and events*/
 *{
     cursor: url("Cursors/DefualtCursor.png"), auto;
 }
-
+.NoneSelect{
+    user-select: none;
+}
+.NoneImgSelect{
+    pointer-events: none;
+}
 .Heading {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
     color: #ffffff;
-    /*background-color: rgba(255, 255, 255, 0.13);*/
-    /*padding: 10px;*/
     border-radius: 15px;
     text-align: center;
     line-height: 15px;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+    width: 300px;
+    padding-top: 8.5px;
+    padding-bottom: 8.5px;
+    border: white solid 2px;
+    padding-left: 100px;
+    padding-right: 100px;
+    background: rgb(2,0,36);
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%);
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
+    text-shadow: 1px 1px black;
 }
 #Tutorial {
     position: absolute;
+    width: 450px;
+    padding-left: 25px;
+    padding-right: 25px;
     left: 50%;
     top: 6%;
     transform: translate(-50%);
     color: #ffffff;
-    /*background-color: rgba(255, 255, 255, 0.13);*/
-    /*padding: 10px;*/
     border-radius: 15px;
     font-weight: bold;
     text-align: center;
     line-height: 15px;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+    height: 35px;
+    border: white solid 2px;
+    font-size: 13px;
+
+    background: rgb(2,0,36);
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%);
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
+
+    text-shadow: 1px 1px black;
 }
 .GivenWord {
     position: absolute;
@@ -38,21 +70,28 @@
     color: #ffffff;
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
-    background-image: url(Images/BlueCheckerDarker.png);
     border: #ffffff 2px solid;
+    background: rgb(2,0,36);
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%);
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
+    text-shadow: 1px 1px black;
 }
-
 body{
     animation: moveIt 280s linear infinite;
 }
-@keyframes moveIt{
-    100% {background-position: 1024px -1024px;}
-}
-
 .Selection{
     position: absolute;
     right: 5%;
     top: 6%;
+    background: rgb(2,0,36);
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%);
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
+    width: 270px;
+    padding-left: 5px;
+    border-radius: 10px;
+    border: white 2px solid;
 }
 #category{
     background-color: white;
@@ -63,36 +102,44 @@ body{
     border: #ffffff 2px solid;
     color: #ffffff;
     outline: none;
-
+    background: rgb(2,0,36);
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%);
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
     cursor: url("Cursors/ClickCursor.png"), auto;
-}
-#category:focus{
-    border-color: #12afff;
 }
 .items{
-    background-color: #12afff;
+    background-color: #000000;
     color: #ffffff;
-
     cursor: url("Cursors/ClickCursor.png"), auto;
 }
-
 #categoryInfo{
     color: white;
 }
 .Option{
     color: #000000;
 }
-
 .Warning{
     position: absolute;
-    left: 42%;
+    left: 50%;
+    transform: translate(-50%);
     top: 89%;
 }
 .WarningText{
     color: white;
+    background: rgb(2,0,36);
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%);
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
+    width: 450px;
+    height: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    text-align: center;
+    border: 2px white solid;
+    border-radius: 10px;
+    text-shadow: 1px 1px black;
 }
-
-
 .WordBox {
     position: absolute;
     left: 50%;
@@ -106,38 +153,38 @@ body{
     border-radius: 15px;
 }
 #InputText {
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 8px;
     border: 0px;
-   /* color: rgb(3, 102, 28); */
     color: #ffffff;
     font-size: 25px;
     width: 500px;
     position: absolute;
     left: 50%;
-    top: 150%;
     transform: translate(-50%);
     background-image: url(Images/YellowChecker2_Dark.jpg);
-    border: #ffffff 2px solid;
-
     cursor: url("Cursors/ClickCursor.png"), auto;
-    
+    background: rgb(2,0,36);
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%);
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
 }
 #InputText:focus {
     outline: none;
-    border-color: yellow;
-    
     cursor: url("Cursors/DefualtCursor.png"), auto;
 }
-
+.InputWord{
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    top: 150%;
+    transform: translate(-50%);
+    border-radius: 15px;
+    height: 45.7px;
+    border: white solid 2px;
+    background-image: none;
+}
 .Goals {
-    /*position: absolute;*/
-    /*left: 50%;*/
-    /*transform: translate(-50%);*/
-    /*top: 50%;*/
-    /*background-color: rgba(255, 255, 255, 0.13);*/
-    /*width: 500px;*/
     border-radius: 15px;
 }
 #Streak {
@@ -160,6 +207,28 @@ body{
     top: 57%;
     left: 48%;
     color: white;
+}
+#CABorder{
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    top: 58.5%;
+    left: 44.3%;
+    background-size: 400% 400%;
+    border-radius: 15px;
+    filter: blur(5px);
+    box-shadow: 0px 0px 0px 0px rgba(39, 177, 5, 10);
+}
+#IABorder{
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    top: 58.5%;
+    left: 50%;
+    background-size: 400% 400%;
+    border-radius: 15px;
+    filter: blur(5px);
+    box-shadow: 0px 0px 0px 0px rgba(255, 0, 0, 10);
 }
 #IncorrectAnswers {
     color: white;
@@ -189,21 +258,17 @@ body{
     aspect-ratio: 1/1;
     position: absolute;
     top: 65%;
-    left: 48.4%;
+    left: 47.7%;
     transform: translate(-50%);
 }
-
 .Help{
     position: absolute;
     top: 45%;
     left: 51%;
     transform: translate(-50%);
 }
-
 .EBtn {
     position: absolute;
-    /*left: 50%;*/
-    /*top: 40%;*/
     width: 125px;
     text-align: center;
     font-size: 30px;
@@ -211,13 +276,11 @@ body{
     color: #ffffff;
     background-color: rgb(0, 0, 0);
     border-radius: 15px;
-
     cursor: url("Cursors/ClickCursor.png"), auto;
 }
 #A {
     left: -150%;
 }
-
 #O {
     left: -40%;
 }
@@ -272,10 +335,12 @@ body{
     background-color: #000000;
     color: #ffffff;
     border-color: #ffffff;
-    background-image: url(Images/BlueChecker.png);
     font-weight: bold;
-
     cursor: url("Cursors/ClickCursor.png"), auto;
+    background: rgb(2,0,36);
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%);
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
 }
 #FlipWords {
     left: 70%;
@@ -286,7 +351,6 @@ body{
     background-color: #000000;
     color: #ffffff;
     top: 110%;
-
     cursor: url("Cursors/ClickCursor.png"), auto;
 }
 #SkipAnswer {
@@ -298,10 +362,8 @@ body{
     font-size: 30px;
     top: 110%;
     font-weight: bold;
-
     cursor: url("Cursors/ClickCursor.png"), auto;
 }
-
 .Submit {
     position: absolute;
     left: 50%;
@@ -316,8 +378,10 @@ body{
 }
 .Design {
     border-color: #ffffff;
-    background-color: rgb(17, 136, 216);
-    background-image: url(Images/BlueChecker.png);
+    background: rgb(2,0,36);
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%);
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
     text-align: center;
     font-size: 30px;
     font-weight: bold;
@@ -326,11 +390,9 @@ body{
     color: #ffffff;
 }
 #Submit {
-    /*padding: 10px;*/
     border-radius: 15px;
     color: #ffffff;
-    background-color: rgb(24, 216, 17);
-    background-image: url(Images/GreenChecker.png);
+    background-image: linear-gradient(45deg,  #48ff00, #42ac19, #42ac19, #42ac19, #48ff00, #48ff00);
     border-color: #ffffff;
     width: 50px;
     height: 50px;
@@ -340,17 +402,18 @@ body{
     position: absolute;
     top: 150%;
     left: 102%;
-
     cursor: url("Cursors/ClickCursor.png"), auto;
+    animation: glowing 20s linear infinite;
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
+    filter: blur(0.1px);
 }
 .Button:hover {
     transform:scale(1.1,1.1);
     -webkit-transform:scale(1.1,1.1);
     -moz-transform:scale(1.1,1.1);
 }
-
 #Hint {
-    /*padding: 10px;*/
     border-radius: 15px;
     color: #ffffff;
     border-color: #ffffff;
@@ -365,39 +428,192 @@ body{
     left: -200%;
     transform: translate(0%, 110%);
     visibility: hidden;
-
     cursor: url("Cursors/ClickCursor.png"), auto;
 }
 #HintMobile {
     position: absolute;
-    /*visibility: hidden;*/
     border-radius: 15px;
     top: 110%;
     left: -200%;
-
-    cursor: url("Cursors/ClickCursor.png"), auto;
-}
-
-
-#UpperCase:hover {
-    background-image: url(Images/GreenChecker.png);
+    animation-name: wiggle;
+    animation-duration: 5s;
+    animation-delay: 5s;
+    animation-iteration-count: infinite;
+    cursor: url("Cursors/HintSelectCursor.png"), auto;
 }
 #Hint:hover {
-    background-image: url(Images/GreenChecker.png);
     rotate: 10deg;
 }
 #HintMobile:hover {
-    background-image: url(Images/GreenChecker.png);
     top: 102%;
 }
-
 .Text {
     font-family: Roboto;
 }
+.EpicAnim::before{
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 15px;
+}
+.EpicAnim:active:after {
+    background: transparent;
+}
+.EpicAnim:hover:before {
+    opacity: 1;
+}
+.EpicAnim:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 15px;
+}
+.EpicAnim2::before{
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 15px;
+}
+.EpicAnim2:hover:before {
+    opacity: 1;
+}
+.EpicAnim2:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 15px;
+}
+.EpicAnim3::before{
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 15px;
+}
+.EpicAnim3:hover:before {
+    opacity: 1;
+}
+.EpicAnim3:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 15px;
+}
+.Button2:hover {
+    rotate: 10deg;
+}
 
+/*animations*/
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2ee600, 0 0 40px #13e600, 0 0 50px #13e600, 0 0 60px #13e600, 0 0 70px #13e600;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #13e600, 0 0 40px #13e600, 0 0 50px #13e600, 0 0 60px #13e600, 0 0 70px #13e600, 0 0 80px #13e600;
+    }
+}
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+@keyframes wiggle {
+    0%, 7% {
+      transform: rotateZ(0);
+    }
+    15% {
+      transform: rotateZ(-15deg);
+    }
+    20% {
+      transform: rotateZ(10deg);
+    }
+    25% {
+      transform: rotateZ(-10deg);
+    }
+    30% {
+      transform: rotateZ(6deg);
+    }
+    35% {
+      transform: rotateZ(-4deg);
+    }
+    40%, 100% {
+      transform: rotateZ(0);
+    }
+}
+@keyframes gradient-animation {
+    0% { background-position: 100% 0%;}
+    50% { background-position: 0% 0%;} 
+    100% { background-position: 100% 0%;}
+}
+@keyframes grow{
+    0% {transform:scale(1,1);}
+    50% {transform:scale(1.5,1.5);}
+    100% {transform:scale(1,1);}
+}
+@-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
+@keyframes moveIt{
+    100% {background-position: 1024px -1024px;}
+}
+@keyframes pulse2 {
+    0% {box-shadow: 0px 0px 0px 0px rgba(255, 0, 0, 50);};
+    50% {box-shadow: 0px 0px 10px 10px rgba(255, 0, 0, 50);}
+    100% {box-shadow: 0px 0px 50px 50px rgba(255, 0, 0, 50);}
+}
+@keyframes pulse {
+    0% {box-shadow: 0px 0px 0px 0px rgba(39, 177, 5, 50);};
+    50% {box-shadow: 0px 0px 10px 10px rgba(39, 177, 5, 50);}
+    100% {box-shadow: 0px 0px 50px 50px rgba(39, 177, 5, 50);}
+}
 
-
-
+/*screens with width smaller then 1000px*/
 @media screen and (max-width:1000px) {
     h1{
         font-size: 17px;
@@ -407,19 +623,37 @@ body{
         font-size: 12px;
         line-height: 20px;
     }
+    #IABorder{
+        top: 65%;
+        left: 52%;
+    }
+    #CABorder{
+        top: 65%;
+        left: 20%;
+    }
     #Tutorial{
-        width: 250px;
-        height: 10px;
+        width: 210px;
+        height: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 11px;
     }
     .Heading{
-        width: 275px;
+        width: 230px;
         height: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
+        border-radius: 13px;
+        font-size: 15px;
     }
     .WordBox{
         top: 30%;
         width: 230px;
     }
     #InputText{
+        width: 230px;
+    }
+    .InputWord{
         width: 230px;
         top: 175%;
     }
@@ -527,14 +761,27 @@ body{
     }
     .Selection{
         top: 87%;
-        left: 18%;
+        left: 50%;
+        transform: translate(-50%);
+
+        width: 245px;
+    }
+    #category{
+        font-size: 10px;
+    }
+    #categoryInfo{
+        font-size: 12px;
     }
     .Warning{
+        top: 92%;
         left: 50%;
         transform: translate(-50%);
     }
     .WarningText{
         font-size: 9px;
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 250px;
     }
     #FlipWords{
         width: 50px;
@@ -558,9 +805,4 @@ body{
     .Help{
         top: 50%;
     }
-}
-
-.Button2:hover {
-    background-image: url(Images/GreenChecker.png);
-    rotate: 10deg;
 }

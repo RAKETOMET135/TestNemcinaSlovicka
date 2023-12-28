@@ -9,52 +9,57 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
-<body background="Images/TestBackgroundDarker.jpg" onclick=UnFocusColorChange()>
+<body background="Images/GalaxyBackground.jpg">
     <section class="Top">
-        <h1 class="Text Heading">Test z německých slovíček</h1>
-        <p class="Text" id="Tutorial">Slovo, které je napsané v češtině, napiš do boxu pod ním německy. Cílem hry je naučit se německá slovíčka.</p>
+        <h1 class="Text Heading NoneSelect">Test z německých slovíček</h1>
+        <p class="Text NoneSelect" id="Tutorial">Slovo, které je napsané v češtině, napiš do boxu pod ním německy. Cílem hry je naučit se německá slovíčka.</p>
     </section>
 
-    <section class="Text GivenWord">
-        <p class="Text" id="GivenWord">vzhled</p>
-        <input type="text" spellcheck="false" id="InputText" class="Text" onfocus=AddFocus() onblur=RemoveFocus()>
-        <button id="Submit" class="Text Button" onclick=SubmitAnswer() onmouseenter=HoverEnter() onmouseleave=HoverExit()>✓</button>
+    <section class="Text GivenWord EpicAnim2">
+        <p class="Text NoneSelect" id="GivenWord">vzhled</p>
+        <div class="EpicAnim2 InputWord">
+            <input type="text" spellcheck="false" id="InputText" class="Text EpicAnim2" onfocus=AddFocus() onblur=RemoveFocus()>
+        </div>
+        <button id="Submit" class="Text Button EpicAnim3 NoneSelect" onclick=SubmitAnswer()>✓</button>
     </section>
 
     <section class="Help">
         <button id="Hint" class="Text Button2" onclick=GiveHint() onmouseenter=HoverEnter2() onmouseleave=HoverExit2()>?</button>
-        <button id="HintMobile" class="Text Design Button2" onclick=GiveHint() onmouseenter=HoverEnter2() onmouseleave=HoverExit2()>?</button>
+        <button id="HintMobile" class="Text Design Button2 EpicAnim NoneSelect" onclick=GiveHint() onmouseenter=HoverEnter2() onmouseleave=HoverExit2()>?</button>
         
-        <button class="Text EBtn Design Button2" id="A" onclick=AddA()>ä</button>
-        <button class="Text EBtn Design Button2" id="O" onclick=AddO()>ö</button>
-        <button class="Text EBtn Design Button2" id="U" onclick=AddU()>ü</button>
-        <button class="Text EBtn Design Button2" id="SS" onclick=AddSS()>ß</button>
+        <button class="Text EBtn Design Button2 EpicAnim NoneSelect" id="A" onclick=AddA()>ä</button>
+        <button class="Text EBtn Design Button2 EpicAnim NoneSelect" id="O" onclick=AddO()>ö</button>
+        <button class="Text EBtn Design Button2 EpicAnim NoneSelect" id="U" onclick=AddU()>ü</button>
+        <button class="Text EBtn Design Button2 EpicAnim NoneSelect" id="SS" onclick=AddSS()>ß</button>
        
-        <button class="Text ALT Design Button2" id="SkipAnswer" onclick=SkipAnswer()>≪</button>
-        <button class="Text ALT Design Button2" id="FlipWords" onclick=FlipWords()></button>
+        <button class="Text ALT Design Button2 EpicAnim NoneSelect" id="SkipAnswer" onclick=SkipAnswer()>≪</button>
+        <button class="Text ALT Design Button2 EpicAnim NoneSelect" id="FlipWords" onclick=FlipWords()></button>
        
         <p class="Text ALT" id="AltSS">Alt + 0223</p>
         <p class="Text ALT" id="AltO">Alt + 0246</p>
         <p class="Text ALT" id="AltA">Alt + 0228</p>
         <p class="Text ALT" id="AltU">Alt + 0252</p>
 
-        <button class="Text ALT Button2" id="UpperCase" onclick=UpperCase()>⇪</button>
+        <button class="Text ALT Button2 EpicAnim NoneSelect" id="UpperCase" onclick=UpperCase()>⇪</button>
     </section>
 
     <section class="Goals">
-        <p class="Text" id="Streak">0</p>
-        <p class="Text" id="CorrectAnswers">0</p>
-        <p class="Text" id="IncorrectAnswers">0</p>
+        <div id="CABorder"></div>
+        <div id="IABorder"></div>
 
-        <img class="CorrectIcon" src="Images/Correct.png" alt="">
-        <img src="Images/Incorrect.png" alt="" class="IncorrectIcon">
-        <img src="Images/Streak.png" alt="" class="Streak">
+        <p class="Text NoneSelect" id="Streak">0</p>
+        <p class="Text NoneSelect" id="CorrectAnswers">0</p>
+        <p class="Text NoneSelect" id="IncorrectAnswers">0</p>
+
+        <img class="CorrectIcon NoneImgSelect NoneSelect" src="Images/Correct.png" alt="">
+        <img src="Images/Incorrect.png" alt="" class="IncorrectIcon NoneImgSelect NoneSelect">
+        <img src="Images/Streak.png" alt="" class="Streak NoneImgSelect NoneSelect" id="StreakImage">
     </section>
 
-    <section class="Selection">
-        <label for="category" id="categoryInfo" class="Text">Oblast slovíček:</label>
+    <section class="Selection EpicAnim2">
+        <label for="category" id="categoryInfo" class="Text NoneSelect">Oblast slovíček:</label>
 
-        <select name="category" id="category" class="Text" onchange=Category()>
+        <select name="category" id="category" class="Text EpicAnim" onchange=Category()>
             <option class="items" value="lekce8_str107-108">Lekce 8 - strana 107-108</option>
             <option class="items" value="lekce8_str102-106">Lekce 8 - strana 102-106</option>
             <option class="items" value="lekce8" class="Option">Lekce 8</option>
@@ -64,8 +69,7 @@
     </section>
 
     <section class="Warning">
-        <p class="Text WarningText">Tato webová stránka slouží jen pro studium.</p>
+        <p class="Text WarningText NoneSelect">Tato webová stránka slouží jen pro studium.</p>
     </section>
-
 </body>
 </html>
