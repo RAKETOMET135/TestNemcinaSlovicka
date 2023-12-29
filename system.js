@@ -29,6 +29,7 @@ var defualtMode = true
 var skipAnswer = false
 var altHolded = false
 var shiftHolded = false
+var submitHovered = false
 
 
 //startup
@@ -165,6 +166,7 @@ if (!CheckUserScreenWidth()){
         hoverInfo.style.left = `${x}px`;
         hoverInfo.style.top = `${y + yOffset}px`;
         hoverInfoMain = hoverInfo
+        submitHovered = true
 
         document.body.appendChild(hoverInfo);
     });
@@ -178,6 +180,8 @@ if (!CheckUserScreenWidth()){
         }
     })
     document.getElementById('Submit').addEventListener('mouseout', function () {
+        submitHovered = false
+
         if (hoverInfoMain) {
             hoverInfoMain.remove();
         }
@@ -454,6 +458,20 @@ function Reset(){
     streakImage.style.transform = "scale(1, 1)"
 
     return
+}
+
+//function that updates hover info text of submit button
+function UpdateSubmitHoverInfo(){
+    if (submitHovered && hoverInfoMain){
+        if (submitButton.innerText == "➔"){
+            hoverInfoMain.innerText = "Další"
+            hoverInfoMain.style.width = "60px"
+        }
+        else{
+            hoverInfoMain.innerText = "Zkontrolovat"
+            hoverInfoMain.style.width = "110px"
+        }
+    }
 }
 
 //function that loads file based on string fileName from folder Lekce
@@ -931,6 +949,7 @@ function SubmitAnswer(){
     }
     AutoFocus()
     OnClickColor(document.getElementById("Submit"))
+    UpdateSubmitHoverInfo()
 }
 
 //functions that plays if the answer is correct
