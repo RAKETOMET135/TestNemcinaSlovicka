@@ -1,0 +1,24 @@
+{
+    "words":[
+        {"cz": "přízemí", "de": "das Erdgeschoss"},
+        {"cz": "patro, poschodí", "de": "die Etage"},
+        {"cz": "dětský koutek", "de": "der Kinderraum"},
+        {"cz": "obchod", "de": "der Laden", "alt": "das Geschäft"},
+        {"cz": "šperk, klenot", "de": "der Schmuck"},
+        {"cz": "bota", "de": "der Schuh"},
+        {"cz": "hračka", "de": "das Spielzeug"},
+        {"cz": "supermarket", "de": "der Supermarkt"},
+        {"cz": "nákupní seznam", "de": "die Einkaufsliste"},
+        {"cz": "oblečení, oděv", "de": "die Kleidung"},
+        {"cz": "trh, tržiště", "de": "der Markt"},
+        {"cz": "balení", "de": "die Packung"},
+        {"cz": "průvodce", "de": "der Reiseführer"},
+        {"cz": "noviny", "de": "die Zeitung"},
+        {"cz": "plechovka, konzerva, dóza", "de": "die Dose"},
+        {"cz": "vlastní svůj", "de": "eigen"},
+        {"cz": "láhev", "de": "die Flashe"},
+        {"cz": "zákazník", "de": "der Kunde"},
+        {"cz": "ochutnat, vyzkoušet", "de": "probieren"},
+        {"cz": "sáček, igelitová taška", "de": "die Tüte"}
+    ]
+}
