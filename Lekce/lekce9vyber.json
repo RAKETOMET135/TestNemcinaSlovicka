@@ -1,0 +1,27 @@
+{
+    "words":[
+        {"cz": "pokoj", "de": "das Zimmer"},
+        {"cz": "země, venkov", "de": "das Land"},
+        {"cz": "město", "de": "die Stadt"},
+        {"cz": "výhled, pohled", "de": "der Blick"},
+        {"cz": "sklep", "de": "der Keller"},
+        {"cz": "kuchyně", "de": "die Küche"},
+        {"cz": "nájemní byt", "de": "die Mietwohnung"},
+        {"cz": "periferie, okraj města", "de": "der Stadtrand"},
+        {"cz": "patro, poschodí", "de": "der Stock"},
+        {"cz": "obývací pokoj, obývák", "de": "das Wohnzimmer"},
+        {"cz": "centrum", "de": "das Zentrum"},
+        {"cz": "most", "de": "die Brücke"},
+        {"cz": "rodinný dům", "de": "das Einfamilienhaus"},
+        {"cz": "podél, kolem", "de": "entlang"},
+        {"cz": "přímo, rovně", "de": "geradeaus"},
+        {"cz": "kostel", "de": "die Kirche"},
+        {"cz": "orientace", "de": "die Orientierung"},
+        {"cz": "náměstí", "de": "der Platz"},
+        {"cz": "řadový dům", "de": "das Reihenhaus"},
+        {"cz": "kolem", "de": "vorbei"},
+        {"cz": "čekat", "de": "warten"},
+        {"cz": "cesta", "de": "der Weg"},
+        {"cz": "mrakodrap", "de": "der Wolkenkratzer"}
+    ]
+}
