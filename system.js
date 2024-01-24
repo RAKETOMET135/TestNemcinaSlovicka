@@ -7,6 +7,7 @@ var caBar = document.getElementById("CorrectAnswers")
 var iaBar = document.getElementById("IncorrectAnswers")
 var flipWords = document.getElementById("FlipWords")
 var streakImage = document.getElementById("StreakImage")
+var wordFileSelect = document.getElementById("category")
 //arrays
 let czWords = []
 let deWords = []
@@ -37,7 +38,8 @@ var submitHovered = false
 flipWords.innerText = "<->"
 
 //Loads latest json file with words
-LoadFile("lekce9vyber.json")
+var lastWordFile = wordFileSelect.options[0].value + ".json"
+LoadFile(lastWordFile)
 
 //adds event listeners to body (used for abbreviations)
 document.body.addEventListener("keydown", (key) =>{
