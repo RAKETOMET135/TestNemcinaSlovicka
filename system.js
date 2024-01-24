@@ -37,7 +37,7 @@ var submitHovered = false
 flipWords.innerText = "<->"
 
 //Loads latest json file with words
-LoadFile("lekce8vyber2.json")
+LoadFile("lekce9vyber.json")
 
 //adds event listeners to body (used for abbreviations)
 document.body.addEventListener("keydown", (key) =>{
