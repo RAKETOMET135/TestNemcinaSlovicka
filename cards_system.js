@@ -22,6 +22,8 @@ var streak = 0;
 var correct = 0;
 var incorrect = 0;
 
+var started = false;
+
 //start
 LoadFile("lekce9vyber.json")
 
@@ -61,7 +63,8 @@ function moveElement() {
 setInterval(moveElement, 10)
 window.onkeydown = function (e) {
     keys[e.key] = true
-    if (e.keyCode == 32){
+    if (e.keyCode == 32 && started == false){
+        started = true
         OnStartup()
     }
 }
