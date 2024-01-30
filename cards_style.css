@@ -1,0 +1,67 @@
+.dropped-word{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 1rem;
+    position: absolute;
+    /*transition: top 0.1s, left 0.1s;*/
+    color: white;
+    background-color: black;
+    border-radius: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: rgb(0, 255, 0) 3px solid;
+    user-select: none;
+    text-align: center;
+}
+
+#rain{
+    position: absolute;
+    width: 90vw;
+    height: 90vh;
+}
+
+#player{
+    width: 50px;
+    aspect-ratio: 1.5/0.5;
+    position: absolute;
+    bottom: 10%;
+}
+
+#player-text{
+    position: absolute;
+    top: 35%;
+    left: 0;
+    width: 250px;
+    color: white;
+    text-align: center;
+    font-family: Roboto;
+    font-weight: bold;
+    justify-self: center;
+    font-size: 1rem;
+    border: 3px rgb(0, 255, 0) solid;
+    background-color: rgb(0, 0, 0);
+    border-radius: 25px;
+}
+
+#player-img{
+    width: 50px;
+    aspect-ratio: 1/1;
+    border: 3px rgb(0, 255, 0) solid;
+    background-color: rgb(0, 0, 0);
+    border-radius: 25px;
+}
+
+.score{
+    position: absolute;
+    top: 10%;
+}
+
+.guide{
+    position: absolute;
+    top: 25%;
+}
+#guide-movement{
+    top: 27.5%;
+}
