@@ -1,0 +1,28 @@
+{
+    "words":[
+        {"cz": "řeka", "de": "der Fluss"},
+        {"cz": "pěší zóna", "de": "die Fußgängerzone"},
+        {"cz": "stanice, zastávka", "de": "die Haltestelle"},
+        {"cz": "křižovatka", "de": "die Kreuzung"},
+        {"cz": "brána", "de": "das Tor"},
+        {"cz": "podjezd, podchod", "de": "die Unterführung"},
+        {"cz": "pohodlný", "de": "bequem"},
+        {"cz": "předsíň, chodba", "de": "die Diele"},
+        {"cz": "dětský pokoj", "de": "das Kinderzimmer"},
+        {"cz": "kuchyňský kout", "de": "die Kochecke"},
+        {"cz": "věc", "de": "die Sache"},
+        {"cz": "ložnice", "de": "das Schlafzimmer"},
+        {"cz": "nájemné", "de": "die Miete"},
+        {"cz": "soused", "de": "der Nachbar"},
+        {"cz": "cena", "de": "der Preis"},
+        {"cz": "místo (parkovací)", "de": "der Stellplatz"},
+        {"cz": "schodiště, schody", "de": "die Treppe"},
+        {"cz": "pronajmout, pronajímat", "de": "vermieten"},
+        {"cz": "výtah", "de": "der Aufzug"},
+        {"cz": "televize", "de": "der Fernseher"},
+        {"cz": "přinést", "de": "holen"},
+        {"cz": "psací stůl", "de": "der Schreibtisch"},
+        {"cz": "koberec", "de": "der Teppich"},
+        {"cz": "pračka", "de": "die Waschmaschine"}
+    ]
+}
