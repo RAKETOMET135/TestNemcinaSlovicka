@@ -128,7 +128,7 @@ if (!CheckUserScreenWidth()){
 
     //function that creates html element with design and returns it
     function CreateHintElement() {
-        var e = document.createElement('div');
+        var e = document.createElement('div')
         e.style.position = "absolute"
         e.style.color = "#ffffff"
         e.style.fontFamily = "Roboto"
@@ -151,8 +151,8 @@ if (!CheckUserScreenWidth()){
 
     //submit element hover event
     document.getElementById('Submit').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         var hoverInfo = CreateHintElement()
 
@@ -165,125 +165,125 @@ if (!CheckUserScreenWidth()){
             hoverInfo.style.width = "110px"
         }
 
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
+        hoverInfo.style.left = `${x}px`
+        hoverInfo.style.top = `${y + yOffset}px`
         hoverInfoMain = hoverInfo
         submitHovered = true
 
-        document.body.appendChild(hoverInfo);
+        document.body.appendChild(hoverInfo)
     });
     document.getElementById('Submit').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
+            hoverInfoMain.style.left = `${x}px`
+            hoverInfoMain.style.top = `${y + yOffset}px`
         }
     })
     document.getElementById('Submit').addEventListener('mouseout', function () {
         submitHovered = false
 
         if (hoverInfoMain) {
-            hoverInfoMain.remove();
+            hoverInfoMain.remove()
         }
     });
     //
 
     //hintMobile element hover event
     document.getElementById('HintMobile').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         var hoverInfo = CreateHintElement()
         hoverInfo.innerText = "Nápověda"
         hoverInfo.style.width = "90px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
+        hoverInfo.style.left = `${x}px`
+        hoverInfo.style.top = `${y + yOffset}px`
         hoverInfoMain = hoverInfo
 
         document.body.appendChild(hoverInfo);
     });
     document.getElementById('HintMobile').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
+            hoverInfoMain.style.left = `${x}px`
+            hoverInfoMain.style.top = `${y + yOffset}px`
         }
     })
     document.getElementById('HintMobile').addEventListener('mouseout', function () {
         if (hoverInfoMain) {
-            hoverInfoMain.remove();
+            hoverInfoMain.remove()
         }
     });
     //
 
     //skipAnswer element hover event
     document.getElementById('SkipAnswer').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         var hoverInfo = CreateHintElement()
         hoverInfo.innerText = "Přeskočit správnou odpověď"
         hoverInfo.style.width = "220px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
+        hoverInfo.style.left = `${x}px`
+        hoverInfo.style.top = `${y + yOffset}px`
         hoverInfoMain = hoverInfo
 
-        document.body.appendChild(hoverInfo);
+        document.body.appendChild(hoverInfo)
     });
     document.getElementById('SkipAnswer').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
+            hoverInfoMain.style.left = `${x}px`
+            hoverInfoMain.style.top = `${y + yOffset}px`
         }
     })
     document.getElementById('SkipAnswer').addEventListener('mouseout', function () {
         if (hoverInfoMain) {
-            hoverInfoMain.remove();
+            hoverInfoMain.remove()
         }
     });
     //
 
     //flipWords element hover event
     document.getElementById('FlipWords').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         var hoverInfo = CreateHintElement()
         hoverInfo.innerText = "Prohodit slova"
         hoverInfo.style.width = "120px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
+        hoverInfo.style.left = `${x}px`
+        hoverInfo.style.top = `${y + yOffset}px`
         hoverInfoMain = hoverInfo
 
-        document.body.appendChild(hoverInfo);
+        document.body.appendChild(hoverInfo)
     });
     document.getElementById('FlipWords').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
+            hoverInfoMain.style.left = `${x}px`
+            hoverInfoMain.style.top = `${y + yOffset}px`
         }
     })
     document.getElementById('FlipWords').addEventListener('mouseout', function () {
         if (hoverInfoMain) {
-            hoverInfoMain.remove();
+            hoverInfoMain.remove()
         }
     });
     //
 
     //upperCase element hover event
     document.getElementById('UpperCase').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         var hoverInfo = CreateHintElement()
 
@@ -296,144 +296,144 @@ if (!CheckUserScreenWidth()){
             hoverInfo.style.width = "115px"    
         }
     
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
+        hoverInfo.style.left = `${x}px`
+        hoverInfo.style.top = `${y + yOffset}px`
         hoverInfoMain = hoverInfo
 
-        document.body.appendChild(hoverInfo);
+        document.body.appendChild(hoverInfo)
     });
     document.getElementById('UpperCase').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
+            hoverInfoMain.style.left = `${x}px`
+            hoverInfoMain.style.top = `${y + yOffset}px`
         }
     })
     document.getElementById('UpperCase').addEventListener('mouseout', function () {
         if (hoverInfoMain) {
-            hoverInfoMain.remove();
+            hoverInfoMain.remove()
         }
     });
     //
 
     //A element hover event
     document.getElementById('A').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         var hoverInfo = CreateHintElement()
         hoverInfo.innerText = "Přidat A s přehláskou"
         hoverInfo.style.width = "165px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
+        hoverInfo.style.left = `${x}px`
+        hoverInfo.style.top = `${y + yOffset}px`
         hoverInfoMain = hoverInfo
 
-        document.body.appendChild(hoverInfo);
+        document.body.appendChild(hoverInfo)
     });
     document.getElementById('A').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
+            hoverInfoMain.style.left = `${x}px`
+            hoverInfoMain.style.top = `${y + yOffset}px`
         }
     })
     document.getElementById('A').addEventListener('mouseout', function () {
         if (hoverInfoMain) {
-            hoverInfoMain.remove();
+            hoverInfoMain.remove()
         }
     });
     //
 
     //O element hover event
     document.getElementById('O').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         var hoverInfo = CreateHintElement()
         hoverInfo.innerText = "Přidat O s přehláskou"
         hoverInfo.style.width = "165px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
+        hoverInfo.style.left = `${x}px`
+        hoverInfo.style.top = `${y + yOffset}px`
         hoverInfoMain = hoverInfo
 
-        document.body.appendChild(hoverInfo);
+        document.body.appendChild(hoverInfo)
     });
     document.getElementById('O').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
+            hoverInfoMain.style.left = `${x}px`
+            hoverInfoMain.style.top = `${y + yOffset}px`
         }
     })
     document.getElementById('O').addEventListener('mouseout', function () {
         if (hoverInfoMain) {
-            hoverInfoMain.remove();
+            hoverInfoMain.remove()
         }
     });
     //
 
     //U element hover event
     document.getElementById('U').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         var hoverInfo = CreateHintElement()
         hoverInfo.innerText = "Přidat U s přehláskou"
         hoverInfo.style.width = "165px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
+        hoverInfo.style.left = `${x}px`
+        hoverInfo.style.top = `${y + yOffset}px`
         hoverInfoMain = hoverInfo
 
         document.body.appendChild(hoverInfo);
     });
     document.getElementById('U').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
+            hoverInfoMain.style.left = `${x}px`
+            hoverInfoMain.style.top = `${y + yOffset}px`
         }
     })
     document.getElementById('U').addEventListener('mouseout', function () {
         if (hoverInfoMain) {
-            hoverInfoMain.remove();
+            hoverInfoMain.remove()
         }
     });
     //
 
     //S element hover event
     document.getElementById('SS').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         var hoverInfo = CreateHintElement()
         hoverInfo.innerText = "Přidat ostré S"
         hoverInfo.style.width = "115px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
+        hoverInfo.style.left = `${x}px`
+        hoverInfo.style.top = `${y + yOffset}px`
         hoverInfoMain = hoverInfo
 
-        document.body.appendChild(hoverInfo);
+        document.body.appendChild(hoverInfo)
     });
     document.getElementById('SS').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+        var x = e.clientX
+        var y = e.clientY
 
         if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
+            hoverInfoMain.style.left = `${x}px`
+            hoverInfoMain.style.top = `${y + yOffset}px`
         }
     })
     document.getElementById('SS').addEventListener('mouseout', function () {
         if (hoverInfoMain) {
-            hoverInfoMain.remove();
+            hoverInfoMain.remove()
         }
     });
     //
@@ -758,7 +758,7 @@ function GetRandomWord(){
         var notUsedWordChance = Math.floor(Math.random() * (2))
         if (notUsedWordChance > 0){
             Array.min = function(array){
-                return Math.min.apply(Math, array);
+                return Math.min.apply(Math, array)
             };
             var minUsedAmnt = Array.min(wordFrequency)
             var wordId = Math.floor(Math.random() * (czWords.length))
