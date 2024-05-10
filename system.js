@@ -39,7 +39,7 @@ var submitHovered = false
 flipWords.innerText = "<->"
 
 //Loads latest json file with words
-var lastWordFile = wordFileSelect.options[0].value + ".json"
+var lastWordFile = wordFileSelect.value + ".json"
 LoadFile(lastWordFile)
 
 //adds event listeners to body (used for abbreviations)
