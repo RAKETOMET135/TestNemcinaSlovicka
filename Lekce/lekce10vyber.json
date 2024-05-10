@@ -32,18 +32,6 @@
         {"cz": "telefonní předvolba", "de": "die Telefonvorwahl"},
         {"cz": "jih", "de": "der Süden"},
         {"cz": "měna", "de": "die Währung"},
-        {"cz": "západ", "de": "der Westen"},
-        {"cz": "začátek", "de": "der Anfang"},
-        {"cz": "prohlédnout si", "de": "sich anschauen"},
-        {"cz": "fanoušek", "de": "der Fan"},
-        {"cz": "dříve", "de": "früher"},
-        {"cz": "štěstí", "de": "das Glück"},
-        {"cz": "poslední", "de": "letzter", "alt": "letzte", "alt2": "letztes"},
-        {"cz": "stát se, přihodit se", "de": "passieren"},
-        {"cz": "kvíz", "de": "das Quiz"},
-        {"cz": "stihnout, zvládnout", "de": "schaffen"},
-        {"cz": "stihnout, zvládnout", "de": "schaffen"},
-        {"cz": "pamětihodnost", "de": "die Sehenswürdigkeit"},
-        {"cz": "taxikář", "de": "der Taxifahrer"}
+        {"cz": "západ", "de": "der Westen"}
     ]
 }
