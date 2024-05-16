@@ -34,20 +34,6 @@
         {"cz": "věž",  "de": "der Turm"},
         {"cz": "předběžné přihlášení",  "de": "die Voranmeldung"},
         {"cz": "nejprve",  "de": "zuerst"},
-        {"cz": "nakonec",  "de": "zuletzt"},
-        {"cz": "chodit po horách, věnovat se horolezectví",  "de": "berg steigen"},
-        {"cz": "levnější",  "de": "billiger"},
-        {"cz": "Bodamské jezero",  "de": "der Bodensee"},
-        {"cz": "raději",  "de": "lieber"},
-        {"cz": "konečně, nakonec",  "de": "endlich", "alt": "schließlich"},
-        {"cz": "letět",  "de": "fliegen"},
-        {"cz": "letadlo",  "de": "das Flugzeug"},
-        {"cz": "velký kynutý knedlík plněný povidly",  "de": "der Germknödel"},
-        {"cz": "klapnout, vyjít, podařit se",  "de": "klappen"},
-        {"cz": "plánovat",  "de": "planen"},
-        {"cz": "pohlednice",  "de": "die Postkarte"},
-        {"cz": "ztratit",  "de": "verlieren"},
-        {"cz": "zaspat",  "de": "verschlafen"},
-        {"cz": "zpoždění",  "de": "die Verspätung"}
+        {"cz": "nakonec",  "de": "zuletzt"}
     ]
 }
