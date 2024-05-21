@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NemcinaSlovicka</title>
+    <title>Nemcina Slovicka</title>
     <script src="system.js" defer></script>
     <link rel="stylesheet" href="styl.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,56 +10,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body background="Images/GalaxyBackground.jpg">
-    <section class="Top">
-        <h1 class="Text Heading NoneSelect">Test z německých slovíček</h1>
-        <p class="Text NoneSelect" id="Tutorial">Slovo, které je napsané v češtině, napiš do boxu pod ním německy. Cílem hry je naučit se německá slovíčka.</p>
+    <section class="top">
+        <h1 class="text heading none-select">Test z německých slovíček</h1>
+        <p class="text none-select" id="tutorial">Slovo, které je napsané v češtině, napiš do boxu pod ním německy. Cílem hry je naučit se německá slovíčka.</p>
     </section>
 
-    <section class="Text GivenWord EpicAnim2">
-        <p class="Text NoneSelect" id="GivenWord">vzhled</p>
-        <div class="EpicAnim2 InputWord">
-            <input type="text" spellcheck="false" id="InputText" class="Text EpicAnim2" onfocus=AddFocus() onblur=RemoveFocus()>
+    <section class="text given-word epic-anim-2">
+        <p class="text none-select" id="given-word">vzhled</p>
+        <div class="epic-anim-2 input-word">
+            <input type="text" spellcheck="false" id="input-text" class="text epic-anim-2" autocomplete="off">
         </div>
-        <button id="Submit" class="Text Button EpicAnim3 NoneSelect" onclick=SubmitAnswer()>✓</button>
+        <button id="submit" class="text button epic-anim-3 none-select">✓</button>
     </section>
 
-    <section class="Help">
-        <button id="Hint" class="Text Button2" onclick=GiveHint() onmouseenter=HoverEnter2() onmouseleave=HoverExit2()>?</button>
-        <button id="HintMobile" class="Text Design Button2 EpicAnim NoneSelect" onclick=GiveHint() onmouseenter=HoverEnter2() onmouseleave=HoverExit2()>?</button>
+    <section class="help">
+        <button id="hint" class="text button-2">?</button>
+        <button id="hint-mobile" class="text design button-2 epic-anim none-select">?</button>
         
-        <button class="Text EBtn Design Button2 EpicAnim NoneSelect" id="A" onclick=AddA()>ä</button>
-        <button class="Text EBtn Design Button2 EpicAnim NoneSelect" id="O" onclick=AddO()>ö</button>
-        <button class="Text EBtn Design Button2 EpicAnim NoneSelect" id="U" onclick=AddU()>ü</button>
-        <button class="Text EBtn Design Button2 EpicAnim NoneSelect" id="SS" onclick=AddSS()>ß</button>
+        <button class="text e-btn design button-2 epic-anim none-select" id="a">ä</button>
+        <button class="text e-btn design button-2 epic-anim none-select" id="o">ö</button>
+        <button class="text e-btn design button-2 epic-anim none-select" id="u">ü</button>
+        <button class="text e-btn design button-2 epic-anim none-select" id="ss">ß</button>
        
-        <button class="Text ALT Design Button2 EpicAnim NoneSelect" id="SkipAnswer" onclick=SkipAnswer()>≪</button>
-        <button class="Text ALT Design Button2 EpicAnim NoneSelect" id="FlipWords" onclick=FlipWords()></button>
-       
-        <p class="Text ALT" id="AltSS">Alt + 0223</p>
-        <p class="Text ALT" id="AltO">Alt + 0246</p>
-        <p class="Text ALT" id="AltA">Alt + 0228</p>
-        <p class="Text ALT" id="AltU">Alt + 0252</p>
+        <button class="text alt design button-2 epic-anim none-select" id="skip-answer">≪</button>
+        <button class="text alt design button-2 epic-anim none-select" id="flip-words"></button>
 
-        <button class="Text ALT Button2 EpicAnim NoneSelect" id="UpperCase" onclick=UpperCase()>⇪</button>
+        <button class="text alt button-2 epic-anim none-select" id="upper-case">⇪</button>
     </section>
 
-    <section class="Goals">
-        <div id="CABorder"></div>
-        <div id="IABorder"></div>
+    <section class="goals">
+        <div id="ca-border"></div>
+        <div id="ia-border"></div>
 
-        <p class="Text NoneSelect" id="Streak">0</p>
-        <p class="Text NoneSelect" id="CorrectAnswers">0</p>
-        <p class="Text NoneSelect" id="IncorrectAnswers">0</p>
+        <p class="text none-select" id="streak">0</p>
+        <p class="text none-select" id="correct-answers">0</p>
+        <p class="text none-select" id="incorrect-answers">0</p>
 
-        <img class="CorrectIcon NoneImgSelect NoneSelect" src="Images/Correct.png" alt="">
-        <img src="Images/Incorrect.png" alt="" class="IncorrectIcon NoneImgSelect NoneSelect">
-        <img src="Images/Streak.png" alt="" class="Streak NoneImgSelect NoneSelect" id="StreakImage">
+        <img class="correct-icon none-img-select none-select" src="Images/Correct.png" alt="" id="correct-image">
+        <img src="Images/Incorrect.png" alt="" class="incorrect-icon none-img-select none-select" id="incorrect-image">
+        <img src="Images/Streak.png" alt="" class="streak none-img-select none-select" id="streak-image">
     </section>
 
-    <section class="Selection EpicAnim2">
-        <label for="category" id="categoryInfo" class="Text NoneSelect">Oblast slovíček:</label>
+    <section class="selection epic-anim-2">
+        <label for="category" id="category-info" class="text none-select">Oblast slovíček:</label>
 
-        <select name="category" id="category" class="Text EpicAnim" onchange=Category()>
+        <select name="category" id="category" class="text epic-anim">
             <option class="items" value="lekce10vyber3" selected>Lekce 10 - výběr 3</option>
             <option class="items" value="lekce10vyber2">Lekce 10 - výběr 2</option>
             <option class="items" value="lekce10vyber">Lekce 10 - výběr</option>
@@ -69,14 +64,14 @@
             <option class="items" value="lekce8vyber2">Lekce 8 - výběr 2</option>
             <option class="items" value="lekce8_str107-108">Lekce 8 - strana 107-108</option>
             <option class="items" value="lekce8_str102-106">Lekce 8 - strana 102-106</option>
-            <option class="items" value="lekce8" class="Option">Lekce 8</option>
-            <option class="items" value="lekce7" class="Option">Lekce 7</option>
-            <option class="items" value="lekce7vyber" class="Option">Lekce 7 - výběr</option>
+            <option class="items" value="lekce8" class="option">Lekce 8</option>
+            <option class="items" value="lekce7" class="option">Lekce 7</option>
+            <option class="items" value="lekce7vyber" class="option">Lekce 7 - výběr</option>
         </select>
     </section>
 
-    <section class="Warning">
-        <p class="Text WarningText NoneSelect">Tato webová stránka slouží jen pro studium.</p>
+    <section class="warning">
+        <p class="text warning-text none-select">Tato webová stránka slouží jen pro studium.</p>
     </section>
 </body>
 </html>

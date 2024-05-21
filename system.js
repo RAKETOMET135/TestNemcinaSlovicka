@@ -1,605 +1,496 @@
-//variables
-//elements
-var submitButton = document.getElementById("Submit")
-var hintButton = document.getElementById("Hint")
-var streakBar = document.getElementById("Streak")
-var caBar = document.getElementById("CorrectAnswers")
-var iaBar = document.getElementById("IncorrectAnswers")
-var flipWords = document.getElementById("FlipWords")
-var streakImage = document.getElementById("StreakImage")
-var wordFileSelect = document.getElementById("category")
-//arrays
-let czWords = []
-let deWords = []
-let altWords = []
-let alt2Words = []
-let incorrectWords = []
-let wordFrequency = []
-//numbers (floats)
-var choseWordId = 0
-var lastWordId = -1 //0 is first index of array (if word 0 rolled then it can still be chosed)
-var streak = 0
-var correctAnswers = 0
-var incorrectAnswers = 0
-var hintState = 0
-var totalWords = 0
-//bools
-var upperCase = false
-var inputFocus = false
-var checkMode = false
-var defualtMode = true
-var skipAnswer = false
-var altHolded = false
-var shiftHolded = false
-var submitHovered = false
-
-
-//startup
-//change text that you can't in html
-flipWords.innerText = "<->"
-
-//Loads latest json file with words
-var lastWordFile = wordFileSelect.value + ".json"
-LoadFile(lastWordFile)
-
-//adds event listeners to body (used for abbreviations)
-document.body.addEventListener("keydown", (key) =>{
-    OnKeyDown(key)
-})
-document.body.addEventListener("keyup", (key) =>{
-    OnKeyUp(key)
-})
-
-
-//functions
-//special function that designs the website to christmas theme (can be called on startup) !!doesn't work with latest design!!
-function ChristmasDesign(){
-    //background
-    var backgroundImages = 4
-    var bg_rn = Math.floor(Math.random() * (backgroundImages))
-    bg_rn += 1
-    
-    var backgroundName = "Background_" + bg_rn + ".jpg"
-
-    document.body.background = "Images/ChristmasImages/" + backgroundName
-
-    //buttons
-    var buttons = []
-    for (var button of document.getElementsByClassName("EBtn")){
-        buttons.push(button)
-    }
-    for (var button of document.getElementsByClassName("ALT")){
-        buttons.push(button)
-    }
-    buttons.push(document.getElementById("HintMobile"))
-
-    for (var button of buttons){
-        button.style.backgroundImage = "url(Images/ChristmasImages/ButtonBackground.jpg)"
-        button.onmouseenter = function(){
-             this.style.backgroundImage = "url(Images/ChristmasImages/ButtonHoverBackground.jpg)"
-        }
-        button.onmouseleave = function(){
-            this.style.backgroundImage = "url(Images/ChristmasImages/ButtonBackground.jpg)"
-        }
-    }
-
-    submitButton.style.backgroundImage = "url(Images/ChristmasImages/ButtonHoverBackground.jpg)"
-
-    //other
-    var givenWords = document.getElementsByClassName("GivenWord")
-    for (var givenWord of givenWords){
-        givenWord.style.backgroundImage = "url(Images/ChristmasImages/GivenWordBackground.jpg)"
-    }
-    var cetegory = document.getElementById("Category")
-    category.style.backgroundImage = "url(Images/ChristmasImages/ButtonBackground.jpg)"
-    var inputText = document.getElementById("InputText")
-    inputText.style.backgroundImage = "url(Images/ChristmasImages/InputWordBackground.jpg)"
-
-    //decorations
-    //checks if user is not using phone or device with small screen width
-    if (!CheckUserScreenWidth()){
-        //creates christmas tree gif
-        var christmasTree = document.createElement("img")
-        christmasTree.src = "Images/ChristmasImages/ChristmasTree.gif"
-        document.body.appendChild(christmasTree)
-        christmasTree.style.width = "200px"
-        christmasTree.style.height = "200px"
-        christmasTree.style.position = "Absolute"
-        christmasTree.style.right = "5%"
-        christmasTree.style.top = "35%"
-
-        //creates candy cane gif
-        var candyCane = document.createElement("img")
-        candyCane.src = "Images/ChristmasImages/CandyCane.gif"
-        document.body.appendChild(candyCane)
-        candyCane.style.width = "200px"
-        candyCane.style.height = "200px"
-        candyCane.style.position = "Absolute"
-        candyCane.style.left = "5%"
-        candyCane.style.top = "35%"
+class userStats{
+    constructor(){
+        this.correct = 0
+        this.incorrect = 0
+        this.hint = 0
+        this.streak = 0
     }
 }
 
-//button hover info
-//checks if user is not using phone or device with small screen width
-if (!CheckUserScreenWidth()){
-    //main variables for hover events
-    var hoverInfoMain = null
-    var yOffset = -25
+class word{
+    constructor(czWord, deWord, altWord, alt2Word, priority){
+        this.czWord = czWord
+        this.deWord = deWord
+        this.alts = [altWord, alt2Word]
+        this.correct = 0
+        this.incorrect = 0
+        this.timesDisplayed = 0
+        this.timesHintUsed = 0
+        this.chance = 0
 
-    //function that creates html element with design and returns it
-    function CreateHintElement() {
-        var e = document.createElement('div');
-        e.style.position = "absolute"
-        e.style.color = "#ffffff"
-        e.style.fontFamily = "Roboto"
-        e.style.fontSize = "15px"
-        e.style.height = "20px"
-        e.style.background = "rgb(2, 0, 36)"
-        e.style.background = "linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%)"
-        e.style.backgroundSize = "200% 200%"
-        e.style.animation = "gradient-animation"
-        e.style.animationDuration = "10s"
-        e.style.animationFillMode = "ease"
-        e.style.animationIterationCount = "infinite"
-        e.style.textAlign = "center"
-        e.style.transform = "translate(-45%)"
-        e.style.border = "white solid 1px"
-        e.style.borderRadius = "10px"
-
-        return e
-    }
-
-    //submit element hover event
-    document.getElementById('Submit').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        var hoverInfo = CreateHintElement()
-
-        if (submitButton.innerText == "➔"){
-            hoverInfo.innerText = "Další"
-            hoverInfo.style.width = "60px"
+        if (priority){
+            this.priority = priority
         }
         else{
-            hoverInfo.innerText = "Zkontrolovat"
-            hoverInfo.style.width = "110px"
+            this.priority = 1
         }
 
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
-        hoverInfoMain = hoverInfo
-        submitHovered = true
+        for (let index = 0; index < 2; index++){
+            let possibleAnswers = []
+            let correctWordString
 
-        document.body.appendChild(hoverInfo);
-    });
-    document.getElementById('Submit').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
+            if (index === 0){
+                for (let i = 0; i < this.alts.length; i++){
+                    const alt = this.alts[i]
+        
+                    if (!alt) continue
+                    if (alt === "") continue
+        
+                    possibleAnswers.push(alt)
+                }
+        
+                correctWordString = this.deWord
+            }
+            else{
+                correctWordString = this.czWord
+            }
+        
+            let currentlyBuildedWord = ""
+            for (let i = 0; i < correctWordString.length; i++){
+                const letter = correctWordString.slice(i, i +1)
+        
+                if (letter === ","){
+                    possibleAnswers.push(currentlyBuildedWord)
+                    currentlyBuildedWord = ""
+                    continue
+                }
+        
+                if (letter === " "){
+                    if (correctWordString.slice(i -1, i) === "," || correctWordString.slice(i +1, i +2) === "("){
+                        continue
+                    }
+                }
+        
+                if (letter === "("){
+                    possibleAnswers.push(currentlyBuildedWord)
+                    currentlyBuildedWord = ""
+                    continue
+                }
+        
+                if (letter === ")"){
+                    possibleAnswers.push(currentlyBuildedWord)
+                    currentlyBuildedWord = ""
+                    continue
+                }
+        
+                currentlyBuildedWord += letter
+        
+                if (i === correctWordString.length -1) possibleAnswers.push(currentlyBuildedWord)
+            }
 
-        if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
-        }
-    })
-    document.getElementById('Submit').addEventListener('mouseout', function () {
-        submitHovered = false
-
-        if (hoverInfoMain) {
-            hoverInfoMain.remove();
-        }
-    });
-    //
-
-    //hintMobile element hover event
-    document.getElementById('HintMobile').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        var hoverInfo = CreateHintElement()
-        hoverInfo.innerText = "Nápověda"
-        hoverInfo.style.width = "90px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
-        hoverInfoMain = hoverInfo
-
-        document.body.appendChild(hoverInfo);
-    });
-    document.getElementById('HintMobile').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
-        }
-    })
-    document.getElementById('HintMobile').addEventListener('mouseout', function () {
-        if (hoverInfoMain) {
-            hoverInfoMain.remove();
-        }
-    });
-    //
-
-    //skipAnswer element hover event
-    document.getElementById('SkipAnswer').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        var hoverInfo = CreateHintElement()
-        hoverInfo.innerText = "Přeskočit správnou odpověď"
-        hoverInfo.style.width = "220px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
-        hoverInfoMain = hoverInfo
-
-        document.body.appendChild(hoverInfo);
-    });
-    document.getElementById('SkipAnswer').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
-        }
-    })
-    document.getElementById('SkipAnswer').addEventListener('mouseout', function () {
-        if (hoverInfoMain) {
-            hoverInfoMain.remove();
-        }
-    });
-    //
-
-    //flipWords element hover event
-    document.getElementById('FlipWords').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        var hoverInfo = CreateHintElement()
-        hoverInfo.innerText = "Prohodit slova"
-        hoverInfo.style.width = "120px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
-        hoverInfoMain = hoverInfo
-
-        document.body.appendChild(hoverInfo);
-    });
-    document.getElementById('FlipWords').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
-        }
-    })
-    document.getElementById('FlipWords').addEventListener('mouseout', function () {
-        if (hoverInfoMain) {
-            hoverInfoMain.remove();
-        }
-    });
-    //
-
-    //upperCase element hover event
-    document.getElementById('UpperCase').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        var hoverInfo = CreateHintElement()
-
-        if (!upperCase){
-            hoverInfo.innerText = "Velká písmena"
-            hoverInfo.style.width = "120px"    
-        }
-        else{
-            hoverInfo.innerText = "Malá písmena"
-            hoverInfo.style.width = "115px"    
-        }
-    
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
-        hoverInfoMain = hoverInfo
-
-        document.body.appendChild(hoverInfo);
-    });
-    document.getElementById('UpperCase').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
-        }
-    })
-    document.getElementById('UpperCase').addEventListener('mouseout', function () {
-        if (hoverInfoMain) {
-            hoverInfoMain.remove();
-        }
-    });
-    //
-
-    //A element hover event
-    document.getElementById('A').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        var hoverInfo = CreateHintElement()
-        hoverInfo.innerText = "Přidat A s přehláskou"
-        hoverInfo.style.width = "165px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
-        hoverInfoMain = hoverInfo
-
-        document.body.appendChild(hoverInfo);
-    });
-    document.getElementById('A').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
-        }
-    })
-    document.getElementById('A').addEventListener('mouseout', function () {
-        if (hoverInfoMain) {
-            hoverInfoMain.remove();
-        }
-    });
-    //
-
-    //O element hover event
-    document.getElementById('O').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        var hoverInfo = CreateHintElement()
-        hoverInfo.innerText = "Přidat O s přehláskou"
-        hoverInfo.style.width = "165px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
-        hoverInfoMain = hoverInfo
-
-        document.body.appendChild(hoverInfo);
-    });
-    document.getElementById('O').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
-        }
-    })
-    document.getElementById('O').addEventListener('mouseout', function () {
-        if (hoverInfoMain) {
-            hoverInfoMain.remove();
-        }
-    });
-    //
-
-    //U element hover event
-    document.getElementById('U').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        var hoverInfo = CreateHintElement()
-        hoverInfo.innerText = "Přidat U s přehláskou"
-        hoverInfo.style.width = "165px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
-        hoverInfoMain = hoverInfo
-
-        document.body.appendChild(hoverInfo);
-    });
-    document.getElementById('U').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
-        }
-    })
-    document.getElementById('U').addEventListener('mouseout', function () {
-        if (hoverInfoMain) {
-            hoverInfoMain.remove();
-        }
-    });
-    //
-
-    //S element hover event
-    document.getElementById('SS').addEventListener('mouseover', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        var hoverInfo = CreateHintElement()
-        hoverInfo.innerText = "Přidat ostré S"
-        hoverInfo.style.width = "115px"
-        hoverInfo.style.left = `${x}px`;
-        hoverInfo.style.top = `${y + yOffset}px`;
-        hoverInfoMain = hoverInfo
-
-        document.body.appendChild(hoverInfo);
-    });
-    document.getElementById('SS').addEventListener('mousemove', function (e) {
-        var x = e.clientX;
-        var y = e.clientY;
-
-        if (hoverInfoMain) {
-            hoverInfoMain.style.left = `${x}px`;
-            hoverInfoMain.style.top = `${y + yOffset}px`;
-        }
-    })
-    document.getElementById('SS').addEventListener('mouseout', function () {
-        if (hoverInfoMain) {
-            hoverInfoMain.remove();
-        }
-    });
-    //
-
-}
-
-//function that brings the website to defualt state
-function Reset(){
-    streak = 0; correctAnswers = 0; incorrectAnswers = 0; UpdateBars()
-    checkMode = false
-    czWords = []
-    deWords = []
-    incorrectWords = []
-    wordFrequency = []
-    altWords = []
-    lastWordId = -1
-    choseWordId = 0
-    hintState = 0
-    submitButton.innerText = "✓"
-    var inputWord = document.getElementById("InputText")
-    inputWord.value = ""
-    inputWord.style.color = "white"
-    inputWord.readOnly = false
-    streakImage.style.transform = "scale(1, 1)"
-
-    return
-}
-
-//function that updates hover info text of submit button
-function UpdateSubmitHoverInfo(){
-    if (submitHovered && hoverInfoMain){
-        if (submitButton.innerText == "➔"){
-            hoverInfoMain.innerText = "Další"
-            hoverInfoMain.style.width = "60px"
-        }
-        else{
-            hoverInfoMain.innerText = "Zkontrolovat"
-            hoverInfoMain.style.width = "110px"
+            if (index === 0){
+                this.dePossibleAnswers = possibleAnswers
+            }
+            else{
+                this.czPossibleAnswers = possibleAnswers
+            }
         }
     }
 }
 
-//function that loads file based on string fileName from folder Lekce
+class hoverElement{
+    constructor(text, width, element){
+        this.text = text
+        this.width = width
+        this.element = element
+    }
+}
+
+const elements = document.querySelectorAll("body *")
+const category = document.querySelector("#category")
+const displayedWord = document.querySelector("#given-word")
+const submitButton = document.querySelector("#submit")
+const inputText = document.querySelector("#input-text")
+const skipCorrectAnswerButton = document.querySelector("#skip-answer")
+const upperCaseButton = document.querySelector("#upper-case")
+const flipWordsButton = document.querySelector("#flip-words")
+const tutorialText = document.querySelector("#tutorial")
+const hintButtons = [document.querySelector("#hint"), document.querySelector("#hint-mobile")]
+const correctAnswersText = document.querySelector("#correct-answers")
+const incorrectAnswersText = document.querySelector("#incorrect-answers")
+const streakText = document.querySelector("#streak")
+const streakImage = document.querySelector("#streak-image")
+const correctImage = document.querySelector("#correct-image")
+const incorrectImage = document.querySelector("#incorrect-image")
+const aButton = document.querySelector("#a")
+const uButton = document.querySelector("#u")
+const oButton = document.querySelector("#o")
+const ssButton = document.querySelector("#ss")
+const warningText = document.querySelector(".warning-text")
+const hoverElements = [
+    new hoverElement(["Další", "Zkontrolovat"], ["60px", "110px"], [submitButton]),
+    new hoverElement(["Nápověda"], ["90px"], hintButtons), 
+    new hoverElement(["Přeskočit správnou odpověď"], ["220px"], [skipCorrectAnswerButton]),
+    new hoverElement(["Prohodit slova"], ["120px"], [flipWordsButton]), 
+    new hoverElement(["Velká písmena", "Malá písmena"], ["120px", "115px"], [upperCaseButton]),
+    new hoverElement(["Přidat A s přehláskou"], ["165px"], [aButton]),
+    new hoverElement(["Přidat O s přehláskou"], ["165px"], [oButton]),
+    new hoverElement(["Přidat U s přehláskou"], ["165px"], [uButton]),
+    new hoverElement(["Přidat ostré S"], ["115px"], [ssButton])
+]
+
+let hoverTextYOffset = -25
+let language = "de"
+let currentLoadedFileName = ""
+let hint = ""
+let skipCorrectWord = false
+let upperCase = false
+let inputFocus = false
+let lowDetail = false
+let stats = new userStats()
+
+let isWordInspect = false
+let altHolded = false
+
+let currentHoverText
+
+let words = []
+let currentWord
+let prevWord
+let lastIncorrectWord
+
+
 function LoadFile(fileName){
     Reset()
     fileName = "Lekce/" + fileName
 
-    let http = new XMLHttpRequest();
-    http.open('get', fileName, true)
+    let http = new XMLHttpRequest()
+    http.open("get", fileName, true)
     http.send()
     http.onload = function(){
         if (this.readyState == 4 && this.status == 200){
             data = JSON.parse(this.responseText)
-            for(var word of data.words){
-                czWords.push(word.cz)
-                deWords.push(word.de)
-                if (word.alt){
-                    altWords.push(word.alt)
-                }
-                else{
-                    altWords.push("")
-                }
-                if (word.alt2){
-                    alt2Words.push(word.alt2)
-                }
-                else{
-                    alt2Words.push("")
-                }
-                wordFrequency.push(0)
+            for(let fileWord of data.words){
+                words.push(new word(fileWord.cz, fileWord.de, fileWord.alt, fileWord.alt2, fileWord.priority))
             }
-            OnStartup()
+            OnFileLoaded()
         }
     }
+
+    currentLoadedFileName = fileName
+
     return
 }
 
-//function that is not used
-async function AutoFocus(){
-    return
+function Reset(){
+    words = []
+    hint = ""
+    isWordInspect = false
+    currentWord = null
+    prevWord = null
+    stats = new userStats()
+}
 
-    if (!inputFocus){
+function ResetInputText(){
+    inputText.readOnly = false
+    inputText.value = ""
+    if (!lowDetail){
+        inputText.style.color = "white"
+    }
+    else{
+        inputText.style.color = "black"
+    }
+}
+
+function DisplayWord(){
+    let pickedWord
+
+    let totalWordChance = 0
+    let usedWordChance = 0
+
+    for (let i = 0; i < words.length; i++){
+        const thisWord = words[i]
+
+        let wordUserSuccess = 1000 - (Math.abs(thisWord.incorrect - thisWord.correct) *50)
+
+        if (thisWord.correct > thisWord.incorrect) wordUserSuccess = 1000
+        if (wordUserSuccess < 1) wordUserSuccess = 1
+
+        const wordDisplaySuccess = thisWord.timesDisplayed + 1
+
+        let wordChance = 100000 / wordUserSuccess / wordDisplaySuccess
+
+        if (thisWord === prevWord){
+            wordChance = 0
+        }
+        else if (prevWord){
+            if (thisWord.czWord === prevWord.czWord){
+                wordChance = 0
+            }
+        }
+
+        wordChance *= thisWord.priority
+
+        thisWord.chance = wordChance
+        totalWordChance += wordChance
+    }
+
+    const chosedNumber = Math.floor(Math.random() * totalWordChance +1)
+
+    for (let i = 0; i < words.length; i++){
+        const thisWord = words[i]
+
+        if (thisWord.chance === 0) continue
+
+        if (chosedNumber > usedWordChance && chosedNumber <= usedWordChance + thisWord.chance){
+            pickedWord = thisWord
+
+            break
+        }
+
+        usedWordChance += thisWord.chance
+    }
+
+    let chanceForIncorrect = Math.floor(Math.random() * 2)
+    if (chanceForIncorrect === 0){
+        let allIncorrectWords = []
+
+        for (let i = 0; i < words.length; i++){
+            const thisWord = words[i]
+
+            if (thisWord.incorrect > thisWord.correct && currentWord !== thisWord){
+                allIncorrectWords.push(thisWord)
+            }
+        }
+
+        if (allIncorrectWords.length > 0) pickedWord = allIncorrectWords[Math.floor(Math.random() * allIncorrectWords.length)]
+    }
+
+    if (language === "de"){
+        displayedWord.innerText = pickedWord.czWord
+    }
+    else{
+        displayedWord.innerText = pickedWord.deWord
+    }
+
+    pickedWord.timesDisplayed += 1
+    currentWord = pickedWord
+    prevWord = pickedWord
+
+    hint = ""
+
+    ResetInputText()
+}
+
+function SubmitUserInput(){
+    if (isWordInspect){
+        isWordInspect = false
+        submitButton.innerText = "✓"
+        if (currentHoverText){
+            if (currentHoverText.innerText === "Další"){
+                currentHoverText.innerText = "Zkontrolovat"
+                currentHoverText.style.width = "110px"
+            }
+        }
+        DisplayWord()
         return
     }
-    var input = document.getElementById("InputText")
-    input.focus()
-    await Wait(0.5)
-    inputFocus = true
-    return
+    submitButton.innerText = "➔"
+    if (currentHoverText){
+        if (currentHoverText.innerText === "Zkontrolovat"){
+            currentHoverText.innerText = "Další"
+            currentHoverText.style.width = "60px"
+        }
+    }
+
+    const userInput = inputText.value
+
+    inputText.readOnly = true
+
+    let possibleAnswers = []
+    let userAnswers = []
+
+    if (language === "de"){
+        possibleAnswers = currentWord.dePossibleAnswers
+    }
+    else{
+        possibleAnswers = currentWord.czPossibleAnswers
+    }
+
+    let currentlyBuildedWord = ""
+    for (let i = 0; i < userInput.length; i++){
+        const letter = userInput.slice(i, i +1)
+
+        if (letter === ","){
+            userAnswers.push(currentlyBuildedWord)
+            currentlyBuildedWord = ""
+            continue
+        }
+
+        if (letter === " "){
+            if (userInput.slice(i -1, i) === "," || userInput.slice(i +1, i +2) === "("){
+                continue
+            }
+        }
+
+        if (letter === "("){
+            userAnswers.push(currentlyBuildedWord)
+            currentlyBuildedWord = ""
+            continue
+        }
+
+        if (letter === ")"){
+            userAnswers.push(currentlyBuildedWord)
+            currentlyBuildedWord = ""
+            continue
+        }
+
+        currentlyBuildedWord += letter
+
+        if (i === userInput.length -1) userAnswers.push(currentlyBuildedWord)
+    }
+
+    let allAnsweredWordsCorrect = true
+    for (let i = 0; i < userAnswers.length; i++){
+        const userAnswer = userAnswers[i]
+        let isCorrect = false
+
+        for (let j = 0; j < possibleAnswers.length; j++){
+            const possibleAnswer = possibleAnswers[j]
+
+            if (possibleAnswer === userAnswer){
+                isCorrect = true
+                break
+            }
+        }
+
+        if (!isCorrect) allAnsweredWordsCorrect = false
+    }
+
+    if (userAnswers.length < 1) allAnsweredWordsCorrect = false
+
+    if (allAnsweredWordsCorrect){
+        OnCorrectAnswer()
+    }
+    else{
+        OnIncorrectAnswer()
+    }
 }
 
-//function that changes UI when answer submitted based on given ansColor
+function IsSmallScreenDevice(){
+    var narrowDevice = false
+    if (window.screen.width <= 1000){
+        narrowDevice = true
+    }
+    return narrowDevice
+}
+
+function InsertAtCursor(inputElement, letter) {
+    if (document.selection) {
+        inputElement.focus()
+        let selected = document.selection.createRange()
+        selected.text = letter
+        selected.moveStart("character", letter.length)
+        selected.select()
+    }
+    else if (inputElement.selectionStart || inputElement.selectionStart == '0') {
+        let startPos = inputElement.selectionStart
+        let endPos = inputElement.selectionEnd
+        inputElement.value = inputElement.value.substring(0, startPos)
+            + letter
+            + inputElement.value.substring(endPos, inputElement.value.length)
+        inputElement.selectionStart = startPos + letter.length
+        inputElement.selectionEnd = startPos + letter.length
+    } else {
+        inputElement.value += letter
+    }
+}
+
+function Hint(){
+    if (isWordInspect) return
+
+    inputText.style.color = "blue"
+
+    let correctAnswer
+    if (language === "de"){
+        correctAnswer = currentWord.dePossibleAnswers[0]
+    }
+    else{
+        correctAnswer = currentWord.czPossibleAnswers[0]
+    }
+
+    if (hint.length === 0){
+        const before = correctAnswer.slice(0, 4)
+
+        if (before === "der " || before === "die " || before === "das "){
+            hint = before
+        }
+        else{
+            hint = correctAnswer.slice(0, 1)
+        }
+    }
+    else{
+        hint = correctAnswer.slice(0, hint.length +1)
+    }
+
+    inputText.value = hint
+}
+
+function DisplayUserStats(){
+    correctAnswersText.innerText = stats.correct
+    incorrectAnswersText.innerText = stats.incorrect
+    streakText.innerText = stats.streak
+
+    const streakScale = 1 * (stats.streak/30) +1
+    streakImage.style.transform = "scale(" + streakScale + ", " + streakScale + ")"
+}
+
 async function DynamicAnswer(ansColor){
-    //changes element colors and borderColors
-    for (var e of document.getElementsByClassName("Text")){
-        if (e.id == "CorrectAnswers" || e.id == "IncorrectAnswers" || e.id == "Streak" || e.id == "InputText"){
+    if (lowDetail) return
+
+    const inputTextDiv = document.querySelector(".input-word")
+
+    for (let e of document.getElementsByClassName("text")){
+        if (e.id === "correct-answers" || e.id === "incorrect-answers" || e.id === "streak" || e.id === "input-text"){
             continue
         }
 
         e.style.color = ansColor
         e.style.borderColor = ansColor
     }
-    document.getElementById("InputText").style.borderColor = ansColor
-    for (var r of document.getElementsByClassName("Selection")){
+    inputTextDiv.style.borderColor = ansColor
+    for (let r of document.getElementsByClassName("selection")){
         r.style.borderColor = ansColor
     }
 
-    //runs animation for correct/incorrect answer
-    var CABorder = document.getElementById("CABorder")
-    var IABorder = document.getElementById("IABorder")
-    if (ansColor == "rgb(0, 255, 100)"){
-        CABorder.style.animation = "pulse"
-        CABorder.style.animationDuration = "0.15s"
-        CABorder.style.background = "rgb(2, 0, 36)"
-        CABorder.style.background = "linear-gradient(45deg, rgb(39, 177, 5) 0%, rgb(35, 141, 8) 18%, rgb(39, 177, 5) 45%, rgb(31, 126, 7) 79%, rgb(39, 177, 5) 100%)"
+    const caBorder = document.getElementById("ca-border")
+    const iaBorder = document.getElementById("ia-border")
+    if (ansColor === "green"){
+        caBorder.style.animation = "pulse"
+        caBorder.style.animationDuration = "0.15s"
+        caBorder.style.background = "rgb(2, 0, 36)"
+        caBorder.style.background = "linear-gradient(45deg, rgb(39, 177, 5) 0%, rgb(35, 141, 8) 18%, rgb(39, 177, 5) 45%, rgb(31, 126, 7) 79%, rgb(39, 177, 5) 100%)"
     }
-    else if (ansColor == "rgb(255, 0, 0)"){
-        IABorder.style.animation = "pulse2"
-        IABorder.style.animationDuration = "0.15s"
-        IABorder.style.background = "rgb(2, 0, 36)"
-        IABorder.style.background = "linear-gradient(45deg, rgb(190, 25, 0) 0%, rgb(185, 5, 5) 18%, rgb(185, 20, 5) 45%, rgb(185, 20, 5) 79%, rgb(185, 20, 5) 100%"
+    else if (ansColor === "red"){
+        iaBorder.style.animation = "pulse2"
+        iaBorder.style.animationDuration = "0.15s"
+        iaBorder.style.background = "rgb(2, 0, 36)"
+        iaBorder.style.background = "linear-gradient(45deg, rgb(190, 25, 0) 0%, rgb(185, 5, 5) 18%, rgb(185, 20, 5) 45%, rgb(185, 20, 5) 79%, rgb(185, 20, 5) 100%"
     }
 
-    //time until the change gets removed
     await Wait(0.15)
 
-    //removes the animation so it can be played later again
-    CABorder.style.animation = "none"
-    CABorder.style.background = "transparent"
-    IABorder.style.animation = "none"
-    IABorder.style.background = "transparent"
+    caBorder.style.animation = "none"
+    caBorder.style.background = "transparent"
+    iaBorder.style.animation = "none"
+    iaBorder.style.background = "transparent"
     
-    //changes element colors and borderColors to defualt
-    for (var e of document.getElementsByClassName("Text")){
-        if (e.id == "CorrectAnswers" || e.id == "IncorrectAnswers" || e.id == "Streak" || e.id == "InputText"){
+    for (let e of document.getElementsByClassName("text")){
+        if (e.id === "correct-answers" || e.id === "incorrect-answers" || e.id === "streak" || e.id === "input-text"){
             continue
         }
 
         e.style.color = "#ffffff"
         e.style.borderColor = "#ffffff"
     }
-    for (var r of document.getElementsByClassName("Selection")){
+    for (let r of document.getElementsByClassName("selection")){
         r.style.borderColor = "white"
     }
-    if (inputFocus){
-        document.getElementById("InputText").style.borderColor = "yellow"
-    }
-    else{
-        document.getElementById("InputText").style.borderColor = "white"
-    }
+    inputTextDiv.style.borderColor = "white"
 }
 
-//function that changes element color to white and then to black
-async function OnClickColor(element){
-    element.style.backgroundColor = "#ffffff"
-    element.style.color = "transparent"
-
-    await Wait(0.2)
-
-    element.style.backgroundColor = "#000000"
-    element.style.color = "#ffffff"
-}
-
-//function that changes given element color based on color given for specific time
 async function ColorChange(element, color){
-    var oldColor = element.style.color
+    let oldColor = element.style.color
     element.style.color = color
     element.style.transform = "scale(1.5)"
 
@@ -609,641 +500,373 @@ async function ColorChange(element, color){
     element.style.color = oldColor
 }
 
-//helper function to make wait
 async function Wait(seconds){
     return new Promise((resolve) => setTimeout(resolve, seconds*1000))
 }
 
-//function that changes skipAnswer state
-function SkipAnswer(){
-    var btn = document.getElementById("SkipAnswer")
-    if (!skipAnswer){
-        btn.innerText = "||"
+function CreateHoverText(){
+    let hoverText = document.createElement("div")
+    let htStyle = hoverText.style
+    htStyle.position = "absolute"
+    htStyle.color = "#ffffff"
+    htStyle.fontFamily = "Roboto"
+    htStyle.fontSize = "15px"
+    htStyle.height = "20px"
+    htStyle.background = "rgb(2, 0, 36)"
+    htStyle.background = "linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%)"
+    htStyle.backgroundSize = "200% 200%"
+    htStyle.animation = "gradient-animation"
+    htStyle.animationDuration = "10s"
+    htStyle.animationFillMode = "ease"
+    htStyle.animationIterationCount = "infinite"
+    htStyle.textAlign = "center"
+    htStyle.transform = "translate(-45%)"
+    htStyle.border = "white solid 1px"
+    htStyle.borderRadius = "10px"
+
+    return hoverText
+}
+
+function UpdateHoverText(thisHoverElement, thisElement, hoverText){
+    let isDefualtHoverText = true
+
+    if (thisElement === submitButton){
+        if (thisElement.innerText !== "➔"){
+            hoverText.innerText = thisHoverElement.text[1]
+            hoverText.style.width = thisHoverElement.width[1]
+            isDefualtHoverText = false
+        }
+    }
+    else if (thisElement === upperCaseButton){
+        if (upperCase){
+            hoverText.innerText = thisHoverElement.text[1]
+            hoverText.style.width = thisHoverElement.width[1]
+            isDefualtHoverText = false
+        }
+    }
+ 
+    if (isDefualtHoverText){
+        hoverText.innerText = thisHoverElement.text[0]
+        hoverText.style.width = thisHoverElement.width[0]
+    }
+}
+
+function OnFileLoaded(){
+    DisplayWord()
+    DisplayUserStats()
+}
+
+function OnCorrectAnswer(){
+    currentWord.correct += 1
+    isWordInspect = true
+    if (hint === ""){
+        stats.correct += 1
+        stats.streak += 1
+
+        DynamicAnswer("green")
+        ColorChange(correctAnswersText, "green")
+        ColorChange(streakText, "orange")
     }
     else{
-        btn.innerText = "≪"
+        stats.hint += 1
+
+        DynamicAnswer("blue")
     }
-    skipAnswer = !skipAnswer
-    AutoFocus()
-}
 
-//function that flip words (german to czech/czech to german)
-function FlipWords(){
-    var tutorial = document.getElementById("Tutorial")
-    if (defualtMode){
-        tutorial.innerText = "Slovo, které je napsané v němčině, napiš do boxu pod ním česky. Cílem hry je naučit se německá slovíčka."
-    }
-    else{
-        tutorial.innerText = "Slovo, které je napsané v češtině, napiš do boxu pod ním německy. Cílem hry je naučit se německá slovíčka."
-    }
-    defualtMode = !defualtMode
-    lastWordId = -1
-    choseWordId = 0
-    hintState = 0
-    submitButton.innerText = "✓"
-    var inputWord = document.getElementById("InputText")
-    inputWord.value = ""
-    inputWord.style.color = "white"
-    inputWord.readOnly = false
-    incorrectWords = []
-    checkMode = false
-    GenerateNewWord()
-    AutoFocus()
-    OnClickColor(document.getElementById("FlipWords"))
-}
-
-//function that is called on startup and generates the first word
-function OnStartup(){
-    GenerateNewWord()
-}
-
-//function that changes the current word file
-function Category(){
-    var category = document.getElementById("category")
-    var chosedJSONFileName = category.value + ".json"
-
-    LoadFile(chosedJSONFileName)
-}
-
-//function that returns true if user screen width is lower then 1000 or false
-function CheckUserScreenWidth(){
-    var narrowDevice = false
-    if (window.screen.width <= 1000){
-        narrowDevice = true
-    }
-    return narrowDevice
-}
-
-//function that updates correctAnswers, incorrectAnswers ans streak texts
-function UpdateBars(){
-    streakBar.innerText = streak
-    caBar.innerText = correctAnswers
-    iaBar.innerText = incorrectAnswers
-    return
-}
-
-//function that gives first or next letter of the current word
-function GiveHint(){
-    if (!checkMode){
-        var deWord = deWords[choseWordId]
-        if (!defualtMode){
-            deWord = czWords[choseWordId]
-        }
-
-        var len = 1
-
-        //checks if the word starts with der or die or das
-        var member = deWord.slice(0, 3)
-        if (member == "der" || member == "die" || member == "das"){
-            len += 4
-        }
-
-        len += hintState
-        if (len > deWord.length){
-            len = deWord.length
-        }
-        var finishedHint = deWord.slice(0, len)
-        var inputWord = document.getElementById("InputText")
-        inputWord.value = finishedHint
-        inputWord.style.color = "rgb(17, 136, 250)"
-        hintState += 1
-    }
-    hintButton.style.backgroundColor = "rgb(0, 0, 0)"
-    AutoFocus()
-    OnClickColor(document.getElementById("HintMobile"))
-}
-
-//function that adds word to incorrect words array
-function AddIncorrectWord(wordId){
-    incorrectWords.push(wordId)
-}
-
-//function that removes word from incorrect words array
-function RemoveIncorrectWord(wordId){
-    const index = incorrectWords.indexOf(wordId)
-    if (index > -1){
-        incorrectWords.splice(index, 1)
-    }
-}
-
-//function that generates a new word
-function GenerateNewWord(){
-    totalWords += 1
-    hintState = 0
-    var word = document.getElementById("GivenWord")
-    word.innerText = GetRandomWord()
-}
-
-//function that gets random words
-function GetRandomWord(){
-   //chance to give incorrect word
-   var i_wordChance = Math.floor(Math.random() * (10))
-   if (i_wordChance > 0 && incorrectWords.length > 0){
-        var wordId = Math.floor(Math.random() * (incorrectWords.length))
-        var fixedId; var t = 0
-        for (var word of czWords){
-            if (t == incorrectWords[wordId]){
-                fixedId = t
-            }
-            t += 1
-        }
-        wordId = fixedId
-
-        //checks if the word wasn't the last one
-        if (lastWordId == wordId){
-            while (lastWordId == wordId){
-                wordId = Math.floor(Math.random() * (czWords.length))
-            }
-        }
-
-        var choseWord = czWords[wordId]
-        lastWordId = wordId
-        choseWordId = wordId
-   }
-   else{
-        //chance to pick word thet was the liest times
-        var notUsedWordChance = Math.floor(Math.random() * (2)); notUsedWordChance = 1
-        if (notUsedWordChance > 0){
-            Array.min = function(array){
-                return Math.min.apply(Math, array);
-            };
-            var minUsedAmnt = Array.min(wordFrequency)
-            var wordId = Math.floor(Math.random() * (czWords.length))
-            var t = 0
-
-            let liestUsedWords = []
-            for (var usedAmnt of wordFrequency){
-                if (minUsedAmnt == usedAmnt){
-                    liestUsedWords.push(t)
-                }
-                t += 1
-            }
-            var rn = Math.floor(Math.random() * (liestUsedWords.length))
-            t = 0
-            for (var unusedWord of liestUsedWords){
-                if (rn == t){
-                    wordId = unusedWord
-                }
-                t += 1
-            }
-
-            var choseWord = czWords[wordId]
-            lastWordId = wordId
-            choseWordId = wordId
-        }
-        else{
-            var wordId = Math.floor(Math.random() * (czWords.length))
-            if (lastWordId == wordId){
-                while (lastWordId == wordId){
-                    wordId = Math.floor(Math.random() * (czWords.length))
-                }
-            }
-            var choseWord = czWords[wordId]
-            lastWordId = wordId
-            choseWordId = wordId
-        }
-   }
-   wordFrequency[choseWordId] += 1
-
-   if (!defualtMode){
-        choseWord = deWords[wordId]
-   }
-
-   return choseWord
-}
-
-//function that checks if the answer is correct or incorrect
-function SubmitAnswer(){
-    //checks if the answer was already submitted => gives new word
-    if (submitButton.innerText == "➔"){
+    if (skipCorrectWord){
+        isWordInspect = false
         submitButton.innerText = "✓"
-        var inputWord = document.getElementById("InputText")
-        inputWord.value = ""
-        inputWord.style.color = "white"
-        inputWord.readOnly = false
-        checkMode = false
-        if (hoverInfoMain){
-            hoverInfoMain.innerText = "Zkontrolovat"
-            hoverInfoMain.style.width = "110px"
+        if (currentHoverText){
+            if (currentHoverText.innerText === "Další"){
+                currentHoverText.innerText = "Zkontrolovat"
+                currentHoverText.style.width = "110px"
+            }
         }
-        GenerateNewWord()
+        DisplayWord()
     }
     else{
-        var correctAnswer = deWords[choseWordId]
-        var inputWord = document.getElementById("InputText")
-        if (hoverInfoMain){
-            hoverInfoMain.innerText = "Další"
-            hoverInfoMain.style.width = "60px"
-        }
+        inputText.style.color = "green"
+    }
 
-        //checks if user is using flipped words
-        if (defualtMode){
-            let altWord = altWords[choseWordId]; let alt2Word = alt2Words[choseWordId]
-            let userAnswer = inputWord.value
-            let isAnswerCorrect = false
-           
-            if (userAnswer == altWord && altWord != "") isAnswerCorrect = true
-            if (userAnswer == alt2Word && alt2Word != "") isAnswerCorrect = true
-            if (userAnswer == correctAnswer) isAnswerCorrect = true
+    DisplayUserStats()
+}
 
-            if (isAnswerCorrect){
-                CorrectAnswer(inputWord, correctAnswer)
-            }
-            else{
-                WrongAnswer(inputWord, correctAnswer)
-            }
+function OnIncorrectAnswer(){
+    currentWord.incorrect += 1
+    isWordInspect = true
+    stats.incorrect += 1
+    stats.streak = 0
+    lastIncorrectWord = currentWord
 
-            /*
-            if (altWords[choseWordId] != ""){
-                if (inputWord.value == correctAnswer || inputWord.value == altWords[choseWordId]){
-                    CorrectAnswer(inputWord, correctAnswer)
-                }
-                else{
-                    WrongAnswer(inputWord, correctAnswer)
-                }
-            }
-            else{
-                if (inputWord.value == correctAnswer){
-                    CorrectAnswer(inputWord, correctAnswer)
-                }
-                else{
-                    WrongAnswer(inputWord, correctAnswer)
-                }
-            }
-            */
+    inputText.style.color = "red"
+
+    DynamicAnswer("red")
+    ColorChange(incorrectAnswersText, "red")
+
+    if (!IsSmallScreenDevice()){
+        if (language === "de"){
+            inputText.value = inputText.value + " => " + currentWord.deWord
         }
         else{
-            // a,_b   a_(b) <= word entering format help
-            correctAnswer = czWords[choseWordId]
-            let correctWords = []
-            var cCA = "" //current correct answer
-            for (var i = 0; i < correctAnswer.length; i++){
-                var cLetter = correctAnswer.slice(i, i+1)
-                
-                if (cLetter == "," || cLetter == "(" || cLetter == ")"){
-                    if (cLetter == "("){
-                        cCA = cCA.slice(0, cCA.length-1)
-                    }
-                    correctWords.push(cCA)
-                    cCA = ""
-                }
-                else{
-                    if (cLetter == " " && correctAnswer.slice(i-1, i) == ","){
-                        continue
-                    }
-                    else{
-                        cCA += correctAnswer.slice(i, i+1)
-                    }
-                }
-            }
-            if (cCA != ""){
-                correctWords.push(cCA)
-            }
-            var c = false
-            var cWord = ""
-            for (var cW of correctWords){
-                if (inputWord.value == cW){
-                    c = true
-                    cWord = cW
-                }
-            }
-            if (!c){
-                if (inputWord.value == correctAnswer){
-                    c = true
-                }
-                //
-                cCA = ""
-                let wordsAnswered = []
-                for (var i = 0; i < inputWord.value.length; i++){
-                    var cLetter = inputWord.value.slice(i, i+1)
-                    
-                    if (cLetter == "," || cLetter == "(" || cLetter == ")"){
-                        if (cLetter == "("){
-                            cCA = cCA.slice(0, cCA.length-1)
-                        }
-                        wordsAnswered.push(cCA)
-                        cCA = ""
-                    }
-                    else{
-                        if (cLetter == " " && inputWord.value.slice(i-1, i) == ","){
-                            continue
-                        }
-                        else{
-                            cCA += inputWord.value.slice(i, i+1)
-                        }
-                    }
-                }
-                if (cCA != ""){
-                    wordsAnswered.push(cCA)
-                }
-                //
-                var allCorrect = true
-                for (var wordAnswered of wordsAnswered){
-                    var h = false
-                    for (var correctWord of correctWords){
-                        if (correctWord == wordAnswered){
-                            h = true
-                        }
-                    }
-                    if (!h){
-                        allCorrect = false
-                    }
-                }
-
-                if (allCorrect && wordsAnswered.length > 0){
-                   c = true
-                }
-            }
-            if (c){
-                CorrectAnswer(inputWord, cWord)
-            }
-            else{
-                var cAnswer = ""; var start = true
-                for (var cW of correctWords){
-                    if (start){
-                        start = false
-                        cAnswer = cW
-                    }
-                    else{
-                        cAnswer += ", " + cW 
-                    }
-                }
-
-                WrongAnswer(inputWord, cAnswer)
-            }
-        }
-    }
-    AutoFocus()
-    OnClickColor(document.getElementById("Submit"))
-    UpdateSubmitHoverInfo()
-}
-
-//functions that plays if the answer is correct
-function CorrectAnswer(userInputBar, correctAnswer){
-    var idFound = false
-    for (var wordId of incorrectWords){
-        if (wordId == choseWordId){
-            idFound = true
-        }
-    }
-    if (idFound){
-        RemoveIncorrectWord(choseWordId)
-    }
-    if (hintState == 0){
-        correctAnswers += 1
-        streak += 1
-        var streakScale = 1 * (streak/30) +1
-        streakImage.style.transform = "scale(" + streakScale + ", " + streakScale + ")"
-        ColorChange(document.getElementById("CorrectAnswers"), "12ff12")
-        ColorChange(document.getElementById("Streak"), "orange")
-        DynamicAnswer("rgb(0, 255, 100)")
-    }
-    else if (hintState > 0){
-        DynamicAnswer("rgb(0, 200, 255)")
-    }
-    UpdateBars()
-    if (!skipAnswer){
-        userInputBar.readOnly = true
-        userInputBar.style.color = "rgb(0, 255, 0)"
-        submitButton.innerText = "➔"
-        checkMode = true
-    }
-    else{
-        var inputWord = document.getElementById("InputText")
-        inputWord.value = ""
-        inputWord.style.color = "white"
-        GenerateNewWord()
-    }
-}
-
-//function that plays if the answer is incorrect
-function WrongAnswer(userInputBar, correctAnswer){
-    userInputBar.readOnly = true
-    if (!CheckUserScreenWidth() && !userInputBar.value == ""){
-        userInputBar.value = userInputBar.value + " => " + correctAnswer
-    }
-    else{
-        userInputBar.value = correctAnswer
-    }
-    userInputBar.style.color = "rgb(255, 0, 0)"
-    submitButton.innerText = "➔"
-    checkMode = true
-    var c = false
-    if (streak > 0){
-        c = true
-    }
-    streak = 0
-    incorrectAnswers += 1
-    var streakScale = 1 * (streak/30) +1
-    streakImage.style.transform = "scale(" + streakScale + ", " + streakScale + ")"
-    ColorChange(document.getElementById("IncorrectAnswers"), "ff1212")
-    if (c){
-        ColorChange(document.getElementById("Streak"), "ff1212")
-    }
-    UpdateBars()
-    AddIncorrectWord(choseWordId)
-    DynamicAnswer("rgb(255, 0, 0)")
-}
-
-//functions used by hintMobile element
-function HoverEnter2(){
-    hintButton.style.backgroundColor = "rgb(25, 25, 25)"
-}
-function HoverExit2(){
-    hintButton.style.backgroundColor = "rgb(0, 0, 0)"
-}
-
-//function that changes letters to uppercase/lowercase
-function UpperCase(){
-    var button = document.getElementById("UpperCase")
-    var a = document.getElementById("A")
-    var o = document.getElementById("O")
-    var u = document.getElementById("U")
-    var alt_a = document.getElementById("AltA")
-    var alt_o = document.getElementById("AltO")
-    var alt_u = document.getElementById("AltU")
-
-    if (!upperCase){
-        button.innerText = "⇪"
-        a.innerText = "Ä"
-        o.innerText = "Ö"
-        u.innerText = "Ü"
-        alt_a.innerText = "Alt + 0196"
-        alt_o.innerText = "Alt + 0214"
-        alt_u.innerText = "Alt + 0220"
-
-        if (hoverInfoMain){
-            hoverInfoMain.innerText = "Malá písmena"
-            hoverInfoMain.style.width = "115px" 
+            inputText.value = inputText.value + " => " + currentWord.czWord
         }
     }
     else{
-        button.innerText = "⇪"  
-        a.innerText = "ä"
-        o.innerText = "ö"
-        u.innerText = "ü"
-        alt_a.innerText = "Alt + 0228"
-        alt_o.innerText = "Alt + 0246"
-        alt_u.innerText = "Alt + 0252"
-
-        if (hoverInfoMain){
-            hoverInfoMain.innerText = "Velká písmena"
-            hoverInfoMain.style.width = "120px"
+        if (language === "de"){
+            inputText.value = currentWord.deWord
+        }
+        else{
+            inputText.value = currentWord.czWord
         }
     }
-    upperCase = !upperCase
-    AutoFocus()
-    OnClickColor(button)
+
+    DisplayUserStats()
 }
 
-//function that inserts letter to input field at cursor position and moves the cursor to that position
-function insertAtCursor(myField, myValue) {
-    if (document.selection) {
-        myField.focus();
-        var sel = document.selection.createRange();
-        sel.text = myValue;
-        sel.moveStart('character', -myValue.length);
-        sel.select();
+function OnKeyDown(e){
+    if (e.key === "Enter"){
+        SubmitUserInput()
     }
-  
-    else if (myField.selectionStart || myField.selectionStart == '0') {
-        var startPos = myField.selectionStart;
-        var endPos = myField.selectionEnd;
-        myField.value = myField.value.substring(0, startPos)
-            + myValue
-            + myField.value.substring(endPos, myField.value.length);
-        myField.selectionStart = startPos + myValue.length;
-        myField.selectionEnd = startPos + myValue.length;
-    } else {
-        myField.value += myValue;
-    }
-}
-
-//function that is used to call insertAtCursor function
-function AddLeter(letter){
-    var inputWord = document.getElementById("InputText")
-    insertAtCursor(inputWord, letter)
-}
-
-//function that adds A umlaut
-function AddA(){
-    if (checkMode) return
-    if (upperCase){
-        AddLeter("Ä")
-    }
-    else{
-        AddLeter("ä")
-    }
-    AutoFocus()
-    Focus()
-    OnClickColor(document.getElementById("A"))
-}
-
-//function that adds O umlaut
-function AddO(){
-    if (checkMode) return
-    if (upperCase){
-        AddLeter("Ö")
-    }
-    else{
-        AddLeter("ö")
-    }
-    AutoFocus()
-    Focus()
-    OnClickColor(document.getElementById("O"))
-}
-
-//function that adds sharp S
-function AddSS(){
-    if (checkMode) return
-    AddLeter("ß")
-    AutoFocus()
-    Focus()
-    OnClickColor(document.getElementById("SS"))
-}
-
-//function that adds U umlaut
-function AddU(){
-    if (checkMode) return
-    if (upperCase){
-        AddLeter("Ü")
-    }
-    else{
-        AddLeter("ü")
-    }
-    AutoFocus()
-    Focus()
-    OnClickColor(document.getElementById("U"))
-}
-
-//function that focuses user to the inputText element
-function Focus(){
-    var inputWord = document.getElementById("InputText")
-
-    inputWord.focus()
-}
-
-//functions that changes inputFocus variable
-function AddFocus(){
-    inputFocus = true
-}
-async function RemoveFocus(){
-    inputFocus = false
-}
-
-//function that plays when user presses key
-function OnKeyDown(key){
-    //skip answer key
-    if (key.key === "Enter" && inputFocus){
-        SubmitAnswer()
-    }
-
-    //support keys
-    if (key.key === "Alt"){
+    if (e.key === "Alt"){
         altHolded = true
     }
-    //shift not used
-    if (key.key === "Shift"){
-        shiftHolded = true
+
+    if (e.key === "a" && altHolded){
+        InsertAtCursor(inputText, "ä")
+    }
+    else if (e.key === "A" && altHolded){
+        InsertAtCursor(inputText, "Ä")
+    }
+    else if (e.key === "o" && altHolded){
+        InsertAtCursor(inputText, "ö")
+    }
+    else if (e.key === "O" && altHolded){
+        InsertAtCursor(inputText, "Ö")
+    }
+    else if (e.key === "u" && altHolded){
+        InsertAtCursor(inputText, "ü")
+    }
+    else if (e.key === "U" && altHolded){
+        InsertAtCursor(inputText, "Ü")
+    }
+    else if (e.key === "s" && altHolded || e.key === "S" && altHolded){
+        InsertAtCursor(inputText, "ß")
     }
 
-    //special character shortcuts
-    if (key.key === "a" && altHolded){
-        if (checkMode) return
-        AddLeter("ä")
+}
+
+function OnKeyUp(e){
+    if (e.key === "Alt"){
+        altHolded = false
     }
-    if (key.key === "o" && altHolded){
-        if (checkMode) return
-        AddLeter("ö")
+
+}
+
+function LowDetailMode(){
+    if (!lowDetail){
+        lowDetail = true
+
+        const cssLink = document.querySelector('link[href="styl.css"]')
+        if (cssLink) {
+            cssLink.remove()
+        }
+        document.body.background = ""
+        streakImage.src = ""
+        correctImage.src = ""
+        incorrectImage.src = ""
+        streakText.style.color = "orange"
+        correctAnswersText.style.color = "green"
+        incorrectAnswersText.style.color = "red"
+        if (inputText.style.color === "white"){
+            inputText.style.color = "black"
+        }
+        const inputTextDiv = document.querySelector(".input-word")
+        for (let e of document.getElementsByClassName("text")){
+            if (e.id === "correct-answers" || e.id === "incorrect-answers" || e.id === "streak" || e.id === "input-text"){
+                continue
+            }
+    
+            e.style.color = "black"
+            e.style.borderColor = "black"
+        }
+        for (let r of document.getElementsByClassName("selection")){
+            r.style.borderColor = "black"
+        }
+        inputTextDiv.style.borderColor = "black"
     }
-    if (key.key === "u" && altHolded){
-        if (checkMode) return
-        AddLeter("ü")
-    }
-    if (key.key === "s" && altHolded || altHolded && key.key === "S"){
-        if (checkMode) return
-        AddLeter("ß")
-    }
-    if (key.key === "A" && altHolded){
-        if (checkMode) return
-        AddLeter("Ä")
-    }
-    if (key.key === "O" && altHolded){
-        if (checkMode) return
-       AddLeter("Ö")
-    }
-    if (key.key === "U" && altHolded){
-        if (checkMode) return
-        AddLeter("Ü")
+    else{
+        lowDetail = false
+
+        const cssLink = document.createElement("link")
+        cssLink.rel = "stylesheet"
+        cssLink.href = "styl.css"
+        document.head.append(cssLink)
+        document.body.background = "Images/GalaxyBackground.jpg"
+        streakImage.src = "Images/Streak.png"
+        correctImage.src = "Images/Correct.png"
+        incorrectImage.src = "Images/Incorrect.png"
+        streakText.style.color = "white"
+        correctAnswersText.style.color = "white"
+        incorrectAnswersText.style.color = "white"
+        if (inputText.style.color === "black"){
+            inputText.style.color = "white"
+        }
+        const inputTextDiv = document.querySelector(".input-word")
+        for (let e of document.getElementsByClassName("text")){
+            if (e.id === "correct-answers" || e.id === "incorrect-answers" || e.id === "streak" || e.id === "input-text"){
+                continue
+            }
+    
+            e.style.color = "white"
+            e.style.borderColor = "white"
+        }
+        for (let r of document.getElementsByClassName("selection")){
+            r.style.borderColor = "white"
+        }
+        inputTextDiv.style.borderColor = "white"
     }
 }
 
-//function that plays when user stops pressing key
-function OnKeyUp(key){
-    if (key.key === "Alt"){
-        altHolded = false
+function OnWebsiteStart(){
+    flipWordsButton.innerText = "<->"
+
+    LoadFile(category.value + ".json")
+}
+
+OnWebsiteStart()
+
+submitButton.addEventListener("click", SubmitUserInput)
+warningText.addEventListener("click", LowDetailMode)
+inputText.addEventListener("keydown", (e) =>{
+    OnKeyDown(e)
+})
+inputText.addEventListener("keyup", (e) =>{
+    OnKeyUp(e)
+})
+inputText.addEventListener("click", () =>{
+    altHolded = false
+})
+inputText.addEventListener("onfocus", () =>{
+    inputFocus = true
+})
+inputText.addEventListener("onblur", () =>{
+    inputFocus = false
+    altHolded = false
+})
+skipCorrectAnswerButton.addEventListener("click", () =>{
+    skipCorrectWord = !skipCorrectWord
+
+    if (skipCorrectWord){
+        skipCorrectAnswerButton.innerText = "||"
     }
-    if (key.key === "Shift"){
-        shiftHolded = false
+    else{
+        skipCorrectAnswerButton.innerText = "≪"
+    }
+})
+category.addEventListener("change", () =>{
+    if (currentLoadedFileName !== category.value + ".json"){
+        LoadFile(category.value + ".json")
+    }
+})
+upperCaseButton.addEventListener("click", () =>{
+    upperCase = !upperCase
+
+    if (upperCase){
+        aButton.innerText = "Ä"
+        uButton.innerText = "Ü"
+        oButton.innerText = "Ö"
+
+        if (currentHoverText){
+            currentHoverText.innerText = "Malá písmena"
+        }
+    }
+    else{
+        aButton.innerText = "ä"
+        uButton.innerText = "ü"
+        oButton.innerText = "ö"
+
+        if (currentHoverText){
+            currentHoverText.innerText = "Velká písmena"
+        }
+    }
+})
+aButton.addEventListener("click", () =>{
+    let letter = "ä"
+    if (upperCase) letter = "Ä"
+
+    InsertAtCursor(inputText, letter)
+})
+uButton.addEventListener("click", () =>{
+    let letter = "ü"
+    if (upperCase) letter = "Ü"
+
+    InsertAtCursor(inputText, letter)
+})
+oButton.addEventListener("click", () =>{
+    let letter = "ö"
+    if (upperCase) letter = "Ö"
+
+    InsertAtCursor(inputText, letter)
+})
+ssButton.addEventListener("click", () =>{
+    let letter = "ß"
+
+    InsertAtCursor(inputText, letter)
+})
+flipWordsButton.addEventListener("click", () =>{
+    if (language === "de") {
+        language = "cz"
+        tutorialText.innerText = "Slovo, které je napsané v němčině, napiš do boxu pod ním česky. Cílem hry je naučit se německá slovíčka."
+    }
+    else{
+        language = "de"
+        tutorialText.innerText = "Slovo, které je napsané v češtině, napiš do boxu pod ním německy. Cílem hry je naučit se německá slovíčka."
+    }
+
+    isWordInspect = false
+    inputText.style.color = "white"
+    DisplayWord()
+})
+for (let i = 0; i < hintButtons.length; i++){
+    const hintButton = hintButtons[i]
+
+    hintButton.addEventListener("click", Hint)
+}
+for (let i = 0; i < hoverElements.length; i++) {
+    const thisHoverElement = hoverElements[i]
+
+    for (let j = 0; j < thisHoverElement.element.length; j++) {
+        const thisElement = thisHoverElement.element[j]
+
+        thisElement.addEventListener("mouseover", (e) => {
+            if (window.screen.width <= 1000) return
+
+            const x = e.clientX
+            const y = e.clientY
+
+            let hoverText = CreateHoverText()
+
+            UpdateHoverText(thisHoverElement, thisElement, hoverText)
+
+            hoverText.style.left = x + "px"
+            hoverText.style.top = (y + hoverTextYOffset) + "px"
+
+            currentHoverText = hoverText
+            document.body.append(hoverText)
+        })
+        thisElement.addEventListener("mousemove", (e) => {
+            const x = e.clientX
+            const y = e.clientY
+
+            if (currentHoverText) {
+                currentHoverText.style.left = x + "px"
+                currentHoverText.style.top = (y + hoverTextYOffset) + "px"
+            }
+        })
+        thisElement.addEventListener("mouseout", () => {
+            if (currentHoverText) {
+                currentHoverText.remove()
+            }
+        })
     }
 }

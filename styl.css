@@ -2,13 +2,13 @@
 *{
     cursor: url("Cursors/DefualtCursor.png"), auto;
 }
-.NoneSelect{
+.none-select{
     user-select: none;
 }
-.NoneImgSelect{
+.none-img-select{
     pointer-events: none;
 }
-.Heading {
+.heading {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
@@ -31,7 +31,7 @@
     animation: gradient-animation 10s ease infinite;
     text-shadow: 1px 1px black;
 }
-#Tutorial {
+#tutorial {
     position: absolute;
     width: 450px;
     padding-left: 25px;
@@ -58,7 +58,7 @@
 
     text-shadow: 1px 1px black;
 }
-.GivenWord {
+.given-word {
     position: absolute;
     left: 50%;
     top: 12%;
@@ -80,7 +80,7 @@
 body{
     animation: moveIt 280s linear infinite;
 }
-.Selection{
+.selection{
     position: absolute;
     right: 5%;
     top: 6%;
@@ -113,19 +113,19 @@ body{
     color: #ffffff;
     cursor: url("Cursors/ClickCursor.png"), auto;
 }
-#categoryInfo{
+#category-info{
     color: white;
 }
-.Option{
+.option{
     color: #000000;
 }
-.Warning{
+.warning{
     position: absolute;
     left: 50%;
     transform: translate(-50%);
     top: 89%;
 }
-.WarningText{
+.warning-text{
     color: white;
     background: rgb(2,0,36);
     background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%);
@@ -140,7 +140,7 @@ body{
     border-radius: 10px;
     text-shadow: 1px 1px black;
 }
-.WordBox {
+.word-box {
     position: absolute;
     left: 50%;
     top: 30%;
@@ -152,7 +152,7 @@ body{
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
 }
-#InputText {
+#input-text {
     border-radius: 15px;
     padding: 8px;
     border: 0px;
@@ -169,11 +169,11 @@ body{
     background-size: 200% 200%;
     animation: gradient-animation 10s ease infinite;
 }
-#InputText:focus {
+#input-text:focus {
     outline: none;
     cursor: url("Cursors/DefualtCursor.png"), auto;
 }
-.InputWord{
+.input-word{
     width: 500px;
     position: absolute;
     left: 50%;
@@ -184,10 +184,10 @@ body{
     border: white solid 2px;
     background-image: none;
 }
-.Goals {
+.goals {
     border-radius: 15px;
 }
-#Streak {
+#streak {
     color: white;
     font-weight: bold;
     text-align: center;
@@ -197,7 +197,7 @@ body{
     left: 51.4%;
     transform: translate(-50%);
 }
-#CorrectAnswers {
+#correct-answers {
     color: white;
     font-weight: bold;
     text-align: center;
@@ -208,7 +208,7 @@ body{
     left: 48%;
     color: white;
 }
-#CABorder{
+#ca-border{
     width: 100px;
     height: 50px;
     position: absolute;
@@ -219,7 +219,7 @@ body{
     filter: blur(5px);
     box-shadow: 0px 0px 0px 0px rgba(39, 177, 5, 10);
 }
-#IABorder{
+#ia-border{
     width: 100px;
     height: 50px;
     position: absolute;
@@ -230,7 +230,7 @@ body{
     filter: blur(5px);
     box-shadow: 0px 0px 0px 0px rgba(255, 0, 0, 10);
 }
-#IncorrectAnswers {
+#incorrect-answers {
     color: white;
     font-weight: bold;
     text-align: center;
@@ -239,21 +239,21 @@ body{
     top: 57%;
     left: 54%;
 }
-.CorrectIcon{
+.correct-icon{
     height: 25px;
     aspect-ratio: 1/1;
     position: absolute;
     top: 60%;
     left: 45%;
 }
-.IncorrectIcon{
+.incorrect-icon{
     height: 25px;
     aspect-ratio: 1/1;
     position: absolute;
     top: 60%;
     left: 50.8%;
 }
-.Streak{
+.streak{
     height: 35px;
     aspect-ratio: 1/1;
     position: absolute;
@@ -261,13 +261,13 @@ body{
     left: 47.7%;
     transform: translate(-50%);
 }
-.Help{
+.help{
     position: absolute;
     top: 45%;
     left: 51%;
     transform: translate(-50%);
 }
-.EBtn {
+.e-btn {
     position: absolute;
     width: 125px;
     text-align: center;
@@ -278,19 +278,19 @@ body{
     border-radius: 15px;
     cursor: url("Cursors/ClickCursor.png"), auto;
 }
-#A {
+#a {
     left: -150%;
 }
-#O {
+#o {
     left: -40%;
 }
-#U {
+#u {
     left: 70%;
 }
-#SS {
+#ss {
     left: 180%;
 }
-.ALT {
+.alt {
     background-color: rgb(255, 255, 255);
     text-align: center;
     font-size: 27.8px;
@@ -301,31 +301,31 @@ body{
     width: 125px;
     height: 62.5px;
 }
-#AltSS {
+#alt-ss {
     left: 60%;
     top: 42%;
     transform: translate(-50%);
     visibility: hidden;
 }
-#AltO {
+#alt-o {
     left: 53.25%;
     top: 42%;
     transform: translate(-50%);
     visibility: hidden;
 }
-#AltA {
+#alt-a {
     left: 46.55%;
     top: 42%;
     transform: translate(-50%);
     visibility: hidden;
 }
-#AltU {
+#alt-u {
     left: 39.8%;
     top: 42%;
     transform: translate(-50%);
     visibility: hidden;
 }
-#UpperCase {
+#upper-case {
     left: 180%;
     top: 110%;
     transform: translate(-50%);
@@ -342,7 +342,7 @@ body{
     background-size: 200% 200%;
     animation: gradient-animation 10s ease infinite;
 }
-#FlipWords {
+#flip-words {
     left: 70%;
     transform: translate(-50%);
     width: 50px;
@@ -353,7 +353,7 @@ body{
     top: 110%;
     cursor: url("Cursors/ClickCursor.png"), auto;
 }
-#SkipAnswer {
+#skip-answer {
     position: absolute;
     left: -40%;
     transform: translate(-50%);
@@ -364,7 +364,7 @@ body{
     font-weight: bold;
     cursor: url("Cursors/ClickCursor.png"), auto;
 }
-.Submit {
+.submit {
     position: absolute;
     left: 50%;
     top: 60%;
@@ -376,7 +376,7 @@ body{
     background-color: rgba(3, 102, 28, 0);
     border-radius: 15px;
 }
-.Design {
+.design {
     border-color: #ffffff;
     background: rgb(2,0,36);
     background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%);
@@ -389,7 +389,7 @@ body{
     height: 50px;
     color: #ffffff;
 }
-#Submit {
+#submit {
     border-radius: 15px;
     color: #ffffff;
     background-image: linear-gradient(45deg,  #48ff00, #42ac19, #42ac19, #42ac19, #48ff00, #48ff00);
@@ -408,12 +408,12 @@ body{
     animation: gradient-animation 10s ease infinite;
     filter: blur(0.1px);
 }
-.Button:hover {
+.button:hover {
     transform:scale(1.1,1.1);
     -webkit-transform:scale(1.1,1.1);
     -moz-transform:scale(1.1,1.1);
 }
-#Hint {
+#hint {
     border-radius: 15px;
     color: #ffffff;
     border-color: #ffffff;
@@ -430,7 +430,7 @@ body{
     visibility: hidden;
     cursor: url("Cursors/ClickCursor.png"), auto;
 }
-#HintMobile {
+#hint-mobile {
     position: absolute;
     border-radius: 15px;
     top: 110%;
@@ -441,16 +441,16 @@ body{
     animation-iteration-count: infinite;
     cursor: url("Cursors/HintSelectCursor.png"), auto;
 }
-#Hint:hover {
+#hint:hover {
     rotate: 10deg;
 }
-#HintMobile:hover {
+#hint-mobile:hover {
     top: 102%;
 }
-.Text {
+.text {
     font-family: Roboto;
 }
-.EpicAnim::before{
+.epic-anim::before{
     content: '';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
@@ -466,13 +466,13 @@ body{
     transition: opacity .3s ease-in-out;
     border-radius: 15px;
 }
-.EpicAnim:active:after {
+.epic-anim:active:after {
     background: transparent;
 }
-.EpicAnim:hover:before {
+.epic-anim:hover:before {
     opacity: 1;
 }
-.EpicAnim:after {
+.epic-anim:after {
     z-index: -1;
     content: '';
     position: absolute;
@@ -482,7 +482,7 @@ body{
     top: 0;
     border-radius: 15px;
 }
-.EpicAnim2::before{
+.epic-anim-2::before{
     content: '';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
@@ -498,10 +498,10 @@ body{
     transition: opacity .3s ease-in-out;
     border-radius: 15px;
 }
-.EpicAnim2:hover:before {
+.epic-anim-2:hover:before {
     opacity: 1;
 }
-.EpicAnim2:after {
+.epic-anim-2:after {
     z-index: -1;
     content: '';
     position: absolute;
@@ -511,7 +511,7 @@ body{
     top: 0;
     border-radius: 15px;
 }
-.EpicAnim3::before{
+.epic-anim-3::before{
     content: '';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
@@ -527,10 +527,10 @@ body{
     transition: opacity .3s ease-in-out;
     border-radius: 15px;
 }
-.EpicAnim3:hover:before {
+.epic-anim-3:hover:before {
     opacity: 1;
 }
-.EpicAnim3:after {
+.epic-anim-3:after {
     z-index: -1;
     content: '';
     position: absolute;
@@ -540,7 +540,7 @@ body{
     top: 0;
     border-radius: 15px;
 }
-.Button2:hover {
+.button-2:hover {
     rotate: 10deg;
 }
 
@@ -623,22 +623,22 @@ body{
         font-size: 12px;
         line-height: 20px;
     }
-    #IABorder{
+    #ia-border{
         top: 65%;
         left: 52%;
     }
-    #CABorder{
+    #ca-border{
         top: 65%;
         left: 20%;
     }
-    #Tutorial{
+    #tutorial{
         width: 210px;
         height: 50px;
         padding-left: 10px;
         padding-right: 10px;
         font-size: 11px;
     }
-    .Heading{
+    .heading{
         width: 230px;
         height: 10px;
         padding-left: 0px;
@@ -646,120 +646,120 @@ body{
         border-radius: 13px;
         font-size: 15px;
     }
-    .WordBox{
+    .word-box{
         top: 30%;
         width: 230px;
     }
-    #InputText{
+    #input-text{
         width: 230px;
     }
-    .InputWord{
+    .input-word{
         width: 230px;
         top: 175%;
     }
-    .GivenWord{
+    .given-word{
         top: 14.7%;
         width: 230px;
     }
-    #GivenWord{
+    #given-word{
         font-size: 25px;
     }
-    #A{
+    #a{
         width: 50px;
         aspect-ratio: 1/1;
         left: 36%;
     }
-    #O{
+    #o{
         width: 50px;
         aspect-ratio: 1/1;
         left: 60%;
     }
-    #U{
+    #u{
         width: 50px;
         aspect-ratio: 1/1;
         left: 12%;
     }
-    #SS{
+    #ss{
         width: 50px;
         aspect-ratio: 1/1;
         left: 85%;
     }
-    .ALT{
+    .alt{
         font-size: 12px;
         width: 50px;
         height: 50px;
     }
-    #AltSS{
+    #alt-ss{
         left: 71%;
         top: 45%;
         transform: translate(-50%);
     }
-    #AltO{
+    #alt-o{
         left: 56.8%;
         top: 45%;
         transform: translate(-50%);
     }
-    #AltA{
+    #alt-a{
         left: 43.25%;
         top: 45%;
         transform: translate(-50%);
     }
-    #AltU{
+    #alt-u{
         left: 29.7%;
         top: 45%;
         transform: translate(-50%);
     }
-    .Submit{
+    .submit{
         width: 250px;
         left: 50%;
     }
-    #Submit{
+    #submit{
         width: 50px;
         left: 102%;
         top: 175%;
     }
-    #Hint{
+    #hint{
         width: 250px;
         top: 50%;
         left: 2%;
         visibility: hidden;
     }
-    #UpperCase{
+    #upper-case{
         width: 50px;
         height: 50px;
         font-size: 30px;
         left: 85%;
     }
-    .Goals{
+    .goals{
         width: 250px;
         font-size: 15px;
         top: 72%;
     }
-    .IncorrectIcon{
+    .incorrect-icon{
         left: 54%;
         top: 67%;
     }
-    .CorrectIcon{
+    .correct-icon{
         left: 23%;
         top: 67%;
     }
-    .Streak{
+    .streak{
         left: 42%;
         top: 72%;
     }
-    #Streak{
+    #streak{
         left: 57%;
         top: 69.5%;
     }
-    #CorrectAnswers{
+    #correct-answers{
         left: 39.65%;
         top: 64%;
     }
-    #IncorrectAnswers{
+    #incorrect-answers{
         left: 71.5%;
         top: 64%;
     }
-    .Selection{
+    .selection{
         top: 87%;
         left: 50%;
         transform: translate(-50%);
@@ -768,41 +768,47 @@ body{
     }
     #category{
         font-size: 10px;
+        width: 120px;
     }
     #categoryInfo{
         font-size: 12px;
     }
-    .Warning{
+    .warning{
         top: 92%;
         left: 50%;
         transform: translate(-50%);
     }
-    .WarningText{
+    .warning-text{
         font-size: 9px;
         padding-left: 0px;
         padding-right: 0px;
         width: 250px;
     }
-    #FlipWords{
+    #flip-words{
         width: 50px;
         height: 50px;
         font-size: 25px;
         left: 60%;
     }
-    #SkipAnswer{
+    #skip-answer{
         width: 50px;
         height: 50px;
         font-size: 25px;
         left: 36%;
     }
-    #HintMobile{
+    #hint-mobile{
         width: 50px;
         aspect-ratio: 1/1;
         visibility: visible;
         top: 110%;
         left: 2%;
     }
-    .Help{
+    .help{
         top: 50%;
     }
+}
+
+.notransition {
+    transition: none !important;
+    animation: none !important;
 }
