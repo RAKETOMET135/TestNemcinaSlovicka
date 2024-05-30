@@ -140,6 +140,10 @@ function AddListWords(){
         eye.style.fontWeight = "bold"
         eye.innerText = " " + thisWord.timesDisplayed + " )"
 
+        if (wordData.isLDM){
+            czWordSpan.style.color = "black"
+            deWordSpan.style.color = "black"
+        }
 
         if (thisWord.timesDisplayed < 1){
             for (let j = 0; j < wordElement.childNodes.length; j++){
