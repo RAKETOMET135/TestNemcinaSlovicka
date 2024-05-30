@@ -543,6 +543,125 @@ body{
 .button-2:hover {
     rotate: 10deg;
 }
+#voice{
+    position: absolute;
+    left: -7.2%;
+    top: 150%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+    transform: translate(-50%);
+    color: #ffffff;
+    background-color: rgba(3, 102, 28, 0);
+    border-radius: 15px;
+    border: white 2px solid;
+    cursor: url("Cursors/ClickCursor.png"), auto;
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%);
+    animation: glowing 20s linear infinite;
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
+    filter: blur(0.1px);
+}
+.voice-image{
+    width: 32px;
+    height: 32px;
+    cursor: url("Cursors/ClickCursor.png"), auto;
+}
+#voice-repeat{
+    position: absolute;
+    top: 320%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+    transform: translate(-50%);
+    color: #ffffff;
+    background-color: rgba(3, 102, 28, 0);
+    border-radius: 15px;
+    border: white 2px solid;
+    cursor: url("Cursors/ClickCursor.png"), auto;
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(30,30,30,1) 18%, rgba(50,50,50,1) 45%, rgba(30,30,30,1) 79%, rgba(0,0,0,1) 100%);
+    animation: glowing 20s linear infinite;
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
+    filter: blur(0.1px);
+}
+.voice-repeat-image{
+    width: 32px;
+    height: 32px;
+    cursor: url("Cursors/ClickCursor.png"), auto;
+}
+.word-list{
+    top: 15%;
+    list-style: none;
+}
+.word-list li{
+    margin-bottom: 10%;
+    margin-top: 0%;
+    text-align: left;
+    text-size-adjust:inherit;
+    text-wrap: nowrap;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+#return-button{
+    position: relative;
+    cursor: url("Cursors/ClickCursor.png"), auto;
+    left: 8%;
+}
+.return-image{
+    width: 32px;
+    height: 32px;
+    cursor: url("Cursors/ClickCursor.png"), auto;
+}
+.seznam-button{
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: url("Cursors/ClickCursor.png"), auto;
+}
+#reset-button{
+    position: relative;
+    top: 25%;
+    left: 8%;
+    cursor: url("Cursors/ClickCursor.png"), auto;
+}
+.reset-image{
+    width: 32px;
+    height: 32px;
+    cursor: url("Cursors/ClickCursor.png"), auto;
+}
+#display-stats{
+    min-width: 375px;
+    position: relative;
+    border-radius: 15px;
+    border: white 2px solid;
+    max-height: 45px;
+    line-height: 42px;
+    left: -2%;
+    display: inline-block;
+    top: -2px;
+}
+.list-nav{
+    position: absolute;
+    left: 50%;
+    top: 6%;
+    transform: translate(-50%);
+    text-align: center;
+}
+
+
+.smooth-transition-rot{
+    transition: rotate 0.05s;
+}
+.smooth-transition-scale{
+    transition: transform 0.05s;
+}
+.smooth-transition-all{
+    transition: all 0.15s;
+}
 
 /*animations*/
 @keyframes glow {
@@ -611,6 +730,22 @@ body{
     0% {box-shadow: 0px 0px 0px 0px rgba(39, 177, 5, 50);};
     50% {box-shadow: 0px 0px 10px 10px rgba(39, 177, 5, 50);}
     100% {box-shadow: 0px 0px 50px 50px rgba(39, 177, 5, 50);}
+}
+
+@media screen and (min-width:1000px) {
+    #voice:hover{
+        left: -7.2%;
+        top: 150%;
+        transform:scale(1.1, 1.1) translate(-42.5%);
+    }
+    #voice-repeat:hover{
+        top: 320%;
+        transform:scale(1.1, 1.1) translate(-42.5%);
+    }
+    .word-list li{
+        position: relative;
+        left: -25%;
+    }
 }
 
 /*screens with width smaller then 1000px*/
@@ -760,7 +895,7 @@ body{
         top: 64%;
     }
     .selection{
-        top: 87%;
+        top: 85%;
         left: 50%;
         transform: translate(-50%);
 
@@ -805,6 +940,41 @@ body{
     }
     .help{
         top: 50%;
+    }
+    #voice{
+        top: 175%;
+        left: -13%;
+    }
+    #voice-repeat{
+        top: 425%;
+    }
+    .word-list{
+        width: 325px;
+        height: fit-content;
+        list-style-position: inside;
+    }
+    .word-list li{
+        margin-left: 5%;
+        margin-bottom: 5%;
+        margin-top: 2.5%;
+        font-size: 1rem;
+    }
+    .seznam-slov{
+        width: 325px;
+    }
+    #display-stats{
+        min-height: 45px;
+        min-width: 200px;
+        max-width: 200px;
+        max-height: 45px;
+        font-size: 15px;
+        top: -7.5px;
+        display: inline-block;
+    }
+    .list-nav{
+        max-width: 350px;
+        min-width: 350px;
+        top: 7.5%;
     }
 }
 

@@ -2,8 +2,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nemcina Slovicka</title>
+    <title>Nemčina Slovicka</title>
     <script src="system.js" defer></script>
+    <link rel="shortcut icon" type="x-icon" href="Images/WebsiteIcon.png">
     <link rel="stylesheet" href="styl.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,31 +21,37 @@
         <div class="epic-anim-2 input-word">
             <input type="text" spellcheck="false" id="input-text" class="text epic-anim-2" autocomplete="off">
         </div>
-        <button id="submit" class="text button epic-anim-3 none-select">✓</button>
+        <button id="submit" class="text button epic-anim-3 none-select smooth-transition-scale">✓</button>
+        <button id="voice" class="text button epic-anim-3 none-select smooth-transition-scale">
+            <img src="Images/VoiceIcon.png" class="voice-image" alt="voice">
+        </button>
+        <button id="voice-repeat" class="text button epic-anim-3 none-select smooth-transition-scale">
+            <img src="Images/SpeakIcon.png" class="voice-repeat-image" alt="speak">
+        </button>
     </section>
 
     <section class="help">
-        <button id="hint" class="text button-2">?</button>
-        <button id="hint-mobile" class="text design button-2 epic-anim none-select">?</button>
+        <button id="hint" class="text button-2 smooth-transition">?</button>
+        <button id="hint-mobile" class="text design button-2 epic-anim none-select smooth-transition-rot">?</button>
         
-        <button class="text e-btn design button-2 epic-anim none-select" id="a">ä</button>
-        <button class="text e-btn design button-2 epic-anim none-select" id="o">ö</button>
-        <button class="text e-btn design button-2 epic-anim none-select" id="u">ü</button>
-        <button class="text e-btn design button-2 epic-anim none-select" id="ss">ß</button>
+        <button class="text e-btn design button-2 epic-anim none-select smooth-transition-rot" id="a">ä</button>
+        <button class="text e-btn design button-2 epic-anim none-select smooth-transition-rot" id="o">ö</button>
+        <button class="text e-btn design button-2 epic-anim none-select smooth-transition-rot" id="u">ü</button>
+        <button class="text e-btn design button-2 epic-anim none-select smooth-transition-rot" id="ss">ß</button>
        
-        <button class="text alt design button-2 epic-anim none-select" id="skip-answer">≪</button>
-        <button class="text alt design button-2 epic-anim none-select" id="flip-words"></button>
+        <button class="text alt design button-2 epic-anim none-select smooth-transition-rot" id="skip-answer">≪</button>
+        <button class="text alt design button-2 epic-anim none-select smooth-transition-rot" id="flip-words"></button>
 
-        <button class="text alt button-2 epic-anim none-select" id="upper-case">⇪</button>
+        <button class="text alt button-2 epic-anim none-select smooth-transition-rot" id="upper-case">⇪</button>
     </section>
 
     <section class="goals">
-        <div id="ca-border"></div>
-        <div id="ia-border"></div>
+        <div id="ca-border" class="smooth-transition-all"></div>
+        <div id="ia-border" class="smooth-transition-all"></div>
 
-        <p class="text none-select" id="streak">0</p>
-        <p class="text none-select" id="correct-answers">0</p>
-        <p class="text none-select" id="incorrect-answers">0</p>
+        <p class="text none-select smooth-transition-all" id="streak">0</p>
+        <p class="text none-select smooth-transition-all" id="correct-answers">0</p>
+        <p class="text none-select smooth-transition-all" id="incorrect-answers">0</p>
 
         <img class="correct-icon none-img-select none-select" src="Images/Correct.png" alt="" id="correct-image">
         <img src="Images/Incorrect.png" alt="" class="incorrect-icon none-img-select none-select" id="incorrect-image">
@@ -52,7 +59,7 @@
     </section>
 
     <section class="selection epic-anim-2">
-        <label for="category" id="category-info" class="text none-select">Oblast slovíček:</label>
+        <label for="category" id="category-info" class="text none-select smooth-transition-all">Oblast slovíček:</label>
 
         <select name="category" id="category" class="text epic-anim">
             <option class="items" value="lekce10vyber3" selected>Lekce 10 - výběr 3</option>
@@ -68,6 +75,8 @@
             <option class="items" value="lekce7" class="option">Lekce 7</option>
             <option class="items" value="lekce7vyber" class="option">Lekce 7 - výběr</option>
         </select>
+
+        <button class="text none-select seznam-button epic-anim button smooth-transition-scale" id="word-list-button">Seznam slovíček</button>
     </section>
 
     <section class="warning">
