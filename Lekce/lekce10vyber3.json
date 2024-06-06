@@ -15,9 +15,7 @@
         {"cz": "dovolená", "de": "der Urlaub"},
         {"cz": "volit", "de": "wählen"},
         {"cz": "stanovat", "de": "zelten"},
-        {"cz": "sníh", "de": "der Schnee"},
-        {"cz": "sníh", "de": "der Schnee"},
-        {"cz": "sníh", "de": "der Schnee"},
+        {"cz": "sníh", "de": "der Schnee", "priority": 5},
         {"cz": "všude", "de": "überall"}
     ]
 }
