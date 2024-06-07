@@ -2,9 +2,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nemčina Slovicka</title>
+    <title>Nemčina Slovíčka</title>
     <script src="system.js" defer></script>
-    <link rel="shortcut icon" type="x-icon" href="Images/WebsiteIcon.png">
+    <link rel="shortcut icon" type="x-icon" href="Images/WebsiteIcon_larger.png">
     <link rel="stylesheet" href="styl.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,12 +12,12 @@
 </head>
 <body background="Images/GalaxyBackground.jpg">
     <section class="top">
-        <h1 class="text heading none-select">Test z německých slovíček</h1>
-        <p class="text none-select" id="tutorial">Slovo, které je napsané v češtině, napiš do boxu pod ním německy. Cílem hry je naučit se německá slovíčka.</p>
+        <h1 class="text heading none-select">Test německých slovíček</h1>
+        <p class="text none-select" id="tutorial"></p>
     </section>
 
     <section class="text given-word epic-anim-2">
-        <p class="text none-select" id="given-word">vzhled</p>
+        <p class="text none-select" id="given-word"></p>
         <div class="epic-anim-2 input-word">
             <input type="text" spellcheck="false" id="input-text" class="text epic-anim-2" autocomplete="off">
         </div>
@@ -77,6 +77,7 @@
         </select>
 
         <button class="text none-select seznam-button epic-anim button smooth-transition-scale" id="word-list-button">Seznam slovíček</button>
+        <img class="text none-img-select" src="Images/Correct.png" alt="" id="all-words-seen">
     </section>
 
     <section class="warning">

@@ -17,6 +17,8 @@ class word{
         this.timesDisplayed = 0
         this.timesHintUsed = 0
         this.chance = 0
+        this.streak = 0
+        this.maxStreak = 0
 
         if (priority){
             this.priority = priority
@@ -122,6 +124,7 @@ const voiceButtonImage = document.querySelector(".voice-image")
 const voiceRepeatButton = document.querySelector("#voice-repeat")
 const voiceRepeatButtonImage = document.querySelector(".voice-repeat-image")
 const wordListButton = document.querySelector("#word-list-button")
+const allWordsSeenMark = document.querySelector("#all-words-seen")
 const hoverElements = [
     new hoverElement(["Další", "Zkontrolovat"], ["60px", "110px"], [submitButton]),
     new hoverElement(["Nápověda"], ["90px"], hintButtons), 
@@ -135,6 +138,10 @@ const hoverElements = [
     new hoverElement(["Předčítat slovíčka", "Nepředčítat slovíčka"], ["145px", "165px"], [voiceButton]),
     new hoverElement(["Zopakovat slovo"], ["125px"], [voiceRepeatButton])
 ]
+const tutorialInfoText = ["Slovo, které je napsané v češtině, napiš do boxu německy. Cílem je naučit se německá slovíčka.", 
+                            "Slovo, které je napsané v němčině, napiš do boxu česky. Cílem je naučit se německá slovíčka."]
+const tutorialInfoTextTTS = ["Slovo, které slyšíš v češtině, napiš do boxu německy. Cílem je naučit se německá slovíčka.",
+                                "Slovo, které slyšíš v němčině, napiš do boxu česky. Cílem je naučit se německá slovíčka."]
 
 let hoverTextYOffset = -25
 let language = "de"
@@ -230,7 +237,7 @@ function DisplayWord(){
         let wordUserSuccess = 1000 - (Math.abs(thisWord.incorrect - thisWord.correct) *50)
 
         if (thisWord.correct > thisWord.incorrect) wordUserSuccess = 1000
-        if (wordUserSuccess < 1) wordUserSuccess = 1
+        if (wordUserSuccess < 1) wordUserSuccess = 10
 
         const wordDisplaySuccess = thisWord.timesDisplayed + 1
 
@@ -400,12 +407,34 @@ function SubmitUserInput(){
 
     if (userAnswers.length < 1) allAnsweredWordsCorrect = false
 
+    ChangeAllSeenMarkState()
+
     if (allAnsweredWordsCorrect){
         OnCorrectAnswer()
     }
     else{
         OnIncorrectAnswer()
     }
+}
+
+function ChangeAllSeenMarkState(){
+    let allWordsSeen = true
+
+    for (let i = 0; i < words.length; i++){
+        const thisWord = words[i]
+
+        if (thisWord.timesDisplayed < 1) allWordsSeen = false
+    }
+
+    if (allWordsSeen){
+        allWordsSeenMark.style.visibility = "visible"
+    }
+    else{
+        allWordsSeenMark.style.visibility = "hidden"
+    }
+
+    allWordsSeenMark.style.width = "10px"
+    allWordsSeenMark.style.height = "10px"
 }
 
 function IsSmallScreenDevice(){
@@ -622,6 +651,13 @@ function SwitchTTS(){
         if (!isWordInspect){
             SayWord(currentWord)
         }
+
+        if (language === "de"){
+            tutorialText.innerText = tutorialInfoTextTTS[0]
+        }
+        else{
+            tutorialText.innerText = tutorialInfoTextTTS[1]
+        }
     }
     else{
         if (language === "de"){
@@ -634,6 +670,13 @@ function SwitchTTS(){
         voiceRepeatButton.style.visibility = "hidden"
 
         window.speechSynthesis.cancel()
+
+        if (language === "de"){
+            tutorialText.innerText = tutorialInfoText[0]
+        }
+        else{
+            tutorialText.innerText = tutorialInfoText[1]
+        }
     }
 }
 
@@ -805,6 +848,7 @@ function OnFileLoaded(){
     }
 
     DisplayUserStats()
+    ChangeAllSeenMarkState()
 }
 
 function OnCorrectAnswer(){
@@ -817,6 +861,11 @@ function OnCorrectAnswer(){
 
             if (thisWord.czWord === currentWord.czWord){
                 words[i].correct += 1
+                words[i].streak += 1
+
+                if (words[i].maxStreak < words[i].streak){
+                    words[i].maxStreak = words[i].streak
+                } 
             }
         }
 
@@ -861,6 +910,7 @@ function OnIncorrectAnswer(){
 
         if (thisWord.czWord === currentWord.czWord){
             words[i].incorrect += 1
+            words[i].streak = 0
         }
     }
     isWordInspect = true
@@ -1005,6 +1055,12 @@ function OnWebsiteStart(){
     flipWordsButton.innerText = "<->"
     speachText.volume = 1
     voiceRepeatButton.style.visibility = "hidden"
+    if (language === "de"){
+        tutorialText.innerText = tutorialInfoText[0]
+    }
+    else{
+        tutorialText.innerText = tutorialInfoText[1]
+    }
 
     LoadFile(category.value + ".json")
 }
@@ -1075,17 +1131,40 @@ ssButton.addEventListener("click", () =>{
     inputText.focus()
 })
 flipWordsButton.addEventListener("click", () =>{
-    if (language === "de") {
-        language = "cz"
-        tutorialText.innerText = "Slovo, které je napsané v němčině, napiš do boxu pod ním česky. Cílem hry je naučit se německá slovíčka."
+    if (!tts){
+        if (language === "de") {
+            language = "cz"
+            tutorialText.innerText = tutorialInfoText[1]
+        }
+        else{
+            language = "de"
+            tutorialText.innerText = tutorialInfoText[0]
+        }
     }
     else{
-        language = "de"
-        tutorialText.innerText = "Slovo, které je napsané v češtině, napiš do boxu pod ním německy. Cílem hry je naučit se německá slovíčka."
+        if (language === "de"){
+            language = "cz"
+            tutorialText.innerText = tutorialInfoTextTTS[1]
+        }   
+        else{
+            language = "de"
+            tutorialText.innerText = tutorialInfoTextTTS[0]
+        }
+    }
+
+    if (!isWordInspect){
+        for (let i = 0; i < words.length; i++){
+            const thisWord = words[i]
+    
+            if (thisWord.czWord === currentWord.czWord){
+                words[i].timesDisplayed -= 1
+            }
+        }
     }
 
     isWordInspect = false
     inputText.style.color = "white"
+
     DisplayWord()
 })
 displayedWord.addEventListener("click", () =>{

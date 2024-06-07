@@ -140,7 +140,7 @@ function AddListWords(){
         eye.style.fontWeight = "bold"
         eye.innerText = " " + thisWord.timesDisplayed + " )"
 
-        if (wordData.isLDM){
+        if (wordData.isLDM || document.body.background === ""){
             czWordSpan.style.color = "black"
             deWordSpan.style.color = "black"
         }
@@ -257,6 +257,22 @@ function DisplayUserStats(){
     d2.innerText = " " + toatlDisplayedWords + " ) "
     d2.style.color = "yellow"
     d2.style.fontWeight = "bold"
+
+    let isMobileDevice = false
+    if (window.screen.width < 1000) isMobileDevice = true
+
+    for (let i = 0; i < displayStats.childNodes.length; i++){
+        const childNode = displayStats.childNodes[i]
+
+        if (isMobileDevice){
+            childNode.style.fontSize = "10px"
+            childNode.classList.add("text")
+        }
+        else{
+            childNode.style.fontSize = "20px"
+            childNode.classList.add("text")
+        }
+    }
 }
 
 function OnStart(){
@@ -331,6 +347,8 @@ resetButton.addEventListener("click", () =>{
         wordList[i].incorrect = 0
         wordList[i].timesDisplayed = 0
         wordList[i].timesHintUsed = 0
+        wordList[i].streak = 0
+        wordList[i].maxStreak = 0
     }
 
     let wordDataObject = {

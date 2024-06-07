@@ -651,6 +651,10 @@ body{
     transform: translate(-50%);
     text-align: center;
 }
+#all-words-seen{
+    width: 10px;
+    height: 10px;
+}
 
 
 .smooth-transition-rot{
