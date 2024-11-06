@@ -1,0 +1,26 @@
+{
+    "words":[
+        {"cz": "odjezd", "de": "die Abfahrt"},
+        {"cz": "přijet, dorazit", "de": "ankommen"},
+        {"cz": "příjezd, přílet", "de": "die Ankunft"},
+        {"cz": "pobyt", "de": "der Aufenthalt"},
+        {"cz": "vzdálenost", "de": "die Entfernung"},
+        {"cz": "zkušenost", "de": "die Erfahrung"},
+        {"cz": "povolený", "de": "erlaubt"},
+        {"cz": "parkoviště, parkovací místo", "de": "der Parkplatz"},
+        {"cz": "hvězda", "de": "der Stern"},
+        {"cz": "levný", "de": "billig"},
+        {"cz": "nebezpečný, riskantní", "de": "gefährlich"},
+        {"cz": "výhodný, příznivý", "de": "günstig"},
+        {"cz": "pomalý", "de": "langsam"},
+        {"cz": "rychlý", "de": "schnell"},
+        {"cz": "napínavý", "de": "spannend"},
+        {"cz": "drahý", "de": "teuer"},
+        {"cz": "ekologický, šetrný k životnímu prostředí", "de": "umweltfreundlich"},
+        {"cz": "hotovost, hotové peníze", "de": "das Bargeld"},
+        {"cz": "jízdenka", "de": "die Fahrkarte"},
+        {"cz": "žákovský průkaz, studentský průkaz", "de": "der Schülerausweis"},
+        {"cz": "dělat, činit", "de": "tun"},
+        {"cz": "přestoupit", "de": "umsteigen"}
+    ]
+}
