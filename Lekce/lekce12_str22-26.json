@@ -1,0 +1,23 @@
+{
+    "words":[
+        {"cz": "cesta, cestování", "de": "die Reise"},
+        {"cz": "doprava, provoz", "de": "der Verkehr"},
+        {"cz": "být, skládat se, sestávat", "de": "bestehen"},
+        {"cz": "věc", "de": "das Ding"},
+        {"cz": "obyvatel", "de": "der Einwohner"},
+        {"cz": "značka, známka", "de": "die Marke"},
+        {"cz": "protékat", "de": "durchfließen"},
+        {"cz": "téci", "de": "fließen"},
+        {"cz": "pohoří, hory", "de": "das Gebirge"},
+        {"cz": "ostrov", "de": "die Insel"},
+        {"cz": "moře", "de": "das Meer", "alt": "die See"},
+        {"cz": "ústit, vlévat se", "de": "münden"},
+        {"cz": "Severní moře", "de": "die Nordsee"},
+        {"cz": "Baltské moře", "de": "die Ostsee"},
+        {"cz": "moře", "de": "die See", "alt": "das Meer"},
+        {"cz": "spočítat", "de": "berechnen"},
+        {"cz": "řešit, vyřešit", "de": "lösen"},
+        {"cz": "směr", "de": "die Richtung"},
+        {"cz": "sám, sama, osobně", "de": "selbst"}
+    ]
+}
