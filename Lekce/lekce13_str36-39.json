@@ -1,0 +1,31 @@
+{
+    "words":[
+        {"cz": "počasí", "de": "das Wetter"},
+        {"cz": "zpráva", "de": "der Bericht"},
+        {"cz": "blýskat se", "de": "blitzen"},
+        {"cz": "hřmět", "de": "donnern"},
+        {"cz": "mrznout", "de": "frieren"},
+        {"cz": "bouřka", "de": "das Gewitter"},
+        {"cz": "stupeň", "de": "das Grad"},
+        {"cz": "horký", "de": "heiß"},
+        {"cz": "nejvyšší teplota", "de": "die Höchsttemperatur"},
+        {"cz": "mlhavý", "de": "neblig"},
+        {"cz": "pršet", "de": "regnen"},
+        {"cz": "přeháňka", "de": "der Schauer"},
+        {"cz": "svítit", "de": "scheinen"},
+        {"cz": "sněžit", "de": "schneien"},
+        {"cz": "slunce", "de": "die Sonne"},
+        {"cz": "stoupat", "de": "steigen"},
+        {"cz": "teplota", "de": "die Temperatur"},
+        {"cz": "výstraha, varování", "de": "die Warnung"},
+        {"cz": "proměnlivý", "de": "wechselhaft"},
+        {"cz": "předpověď počasí", "de": "die Wettervorhersage"},
+        {"cz": "větrný", "de": "windig"},
+        {"cz": "oblačný, zamračený", "de": "wolkig"},
+        {"cz": "košile", "de": "das Hemd"},
+        {"cz": "kalhoty", "de": "die Hose"},
+        {"cz": "bunda", "de": "die Jacke"},
+        {"cz": "šaty", "de": "das Kleid"},
+        {"cz": "deštník", "de": "der Regenschirm"}
+    ]
+}
