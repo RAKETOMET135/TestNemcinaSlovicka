@@ -21,11 +21,6 @@
         {"cz": "proměnlivý", "de": "wechselhaft"},
         {"cz": "předpověď počasí", "de": "die Wettervorhersage"},
         {"cz": "větrný", "de": "windig"},
-        {"cz": "oblačný, zamračený", "de": "wolkig"},
-        {"cz": "košile", "de": "das Hemd"},
-        {"cz": "kalhoty", "de": "die Hose"},
-        {"cz": "bunda", "de": "die Jacke"},
-        {"cz": "šaty", "de": "das Kleid"},
-        {"cz": "deštník", "de": "der Regenschirm"}
+        {"cz": "oblačný, zamračený", "de": "wolkig"}
     ]
 }
