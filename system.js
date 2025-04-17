@@ -1063,6 +1063,25 @@ function OnWebsiteStart(){
     }
 
     LoadFile(category.value + ".json")
+
+    let notificationData = window.localStorage.getItem("notification_window")
+
+    if (notificationData === null){
+        window.localStorage.setItem("notification_window", true)
+
+        const notificationWindow = document.querySelector("#notification")
+        notificationWindow.style.visibility = "visible"
+
+        const notificationConfirm = document.querySelector("#notification-confirm")
+        notificationConfirm.addEventListener("click", () => {
+            window.location.href = "https://raketomet135.github.io/NemcinaSlovicka/default/default.html"
+        })
+
+        const notificationClose = document.querySelector("#notification-close")
+        notificationClose.addEventListener("click", () => {
+            notificationWindow.style.visibility = "hidden"
+        })
+    }
 }
 
 OnWebsiteStart()
