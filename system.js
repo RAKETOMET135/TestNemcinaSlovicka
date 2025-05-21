@@ -1066,7 +1066,7 @@ function OnWebsiteStart(){
 
     let notificationData = window.localStorage.getItem("notification_window")
 
-    if (notificationData === null){
+    //if (notificationData === null){
         window.localStorage.setItem("notification_window", true)
 
         const notificationWindow = document.querySelector("#notification")
@@ -1081,7 +1081,7 @@ function OnWebsiteStart(){
         notificationClose.addEventListener("click", () => {
             notificationWindow.style.visibility = "hidden"
         })
-    }
+    //}
 }
 
 OnWebsiteStart()

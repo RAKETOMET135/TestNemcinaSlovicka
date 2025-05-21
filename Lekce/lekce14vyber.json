@@ -1,0 +1,30 @@
+{
+    "words":[
+        {"cz": "zdraví", "de": "die Gesundheit"},
+        {"cz": "nemoc, choroba", "de": "die Krankheit"},
+        {"cz": "lékař", "de": "der Arzt"},
+        {"cz": "u lékaře", "de": "beim Arzt"},
+        {"cz": "paže, ruka", "de": "der Arm"},
+        {"cz": "oko", "de": "das Auge"},
+        {"cz": "břicho", "de": "der Bauch"},
+        {"cz": "noha", "de": "das Bein"},
+        {"cz": "hrudník, prsa", "de": "die Brust"},
+        {"cz": "prst", "de": "der Finger"},
+        {"cz": "vlas, chlup", "de": "das Haar"},
+        {"cz": "krk", "de": "der Hals"},
+        {"cz": "hlava", "de": "der Kopf"},
+        {"cz": "tělo", "de": "der Körper"},
+        {"cz": "ústa", "de": "der Mund"},
+        {"cz": "nos", "de": "die Nase"},
+        {"cz": "ucho", "de": "das Ohr"},
+        {"cz": "záda", "de": "der Rücken"},
+        {"cz": "bolest", "de": "der Schmerz"},
+        {"cz": "bolet", "de": "wehtun"},
+        {"cz": "blond", "de": "blond"},
+        {"cz": "obličej", "de": "das Gesicht"},
+        {"cz": "oválný", "de": "oval"},
+        {"cz": "zrzavý", "de": "rot"},
+        {"cz": "kulatý", "de": "rund"},
+        {"cz": "zub", "de": "der Zahn"}
+    ]
+}
